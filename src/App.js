@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 
 // Components
-import WhoIsPlaying from './containers/WhoIsPlaying'
 
 // Material UI Components
 import mui from 'material-ui';
@@ -31,8 +30,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <h1>Memory</h1>
-          <WhoIsPlaying />
+          <h1>WeWork Survival</h1>
         </div>
       </MuiThemeProvider>
     )
