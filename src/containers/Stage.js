@@ -6,6 +6,8 @@ import changeStage from '../actions/change-stage'
 
 import Bar from '../components/stages/bar'
 import Entrance from '../components/stages/entrance'
+import Stairway from '../components/stages/stairway'
+
 
 class Stage extends Component {
 
