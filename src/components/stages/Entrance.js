@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
-import mondy from '../../actions/mondy'
+import mondy from '../../actions/mondy-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 
@@ -103,7 +103,7 @@ class Entrance extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isMondyThere: state.mondy
+    isMondyThere: state.people.mondy
   }
 }
 
