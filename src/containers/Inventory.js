@@ -3,19 +3,13 @@ import Paper from 'material-ui/Paper'
 
 const style = {
     inventorybox: {
-      marginTop: '3vh',
-      width: '1180px',
-      height: '16vh',
+      marginTop: '2vh',
+      width: '880px',
+      margin: '0 auto',
+      height: '12vh',
       border: '10px solid #d3d3d3',
       borderRadius: '10px',
       backgroundColor: '#f5fafb'
-    },
-    grid: {
-      height: '80',
-      width: '80',
-      margin: '20',
-      textAlign: 'center',
-      display: 'inline-block',
     },
     tiles: {
       margin: '0 auto',
@@ -25,13 +19,13 @@ const style = {
        position: 'absolute',
        top: '50%',
        left: '50%',
-       height: '40px',
-       marginTop: '-20px',
-       marginLeft: '-20px',
+       height: '30px',
+       marginTop: '-15px',
+       marginLeft: '-15px',
     },
     item: {
-      height: 80,
-      width: 80,
+      height: 60,
+      width: 60,
       borderRadius: '50%',
       boxShadow: '0px 1px 10px grey',
       position: 'relative',
@@ -55,10 +49,6 @@ class Inventory extends Component {
            </div>
            <div style={style.item}>
              <img src={'http://emojipedia-us.s3.amazonaws.com/cache/29/fa/29fa71a263beee5f4bee9dfbf59b501f.png'}
-                  style={style.images}/>
-           </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
                   style={style.images}/>
            </div>
            <div style={style.item}>
