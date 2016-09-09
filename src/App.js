@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Stage from './containers/Stage'
+import Inventory from './containers/Inventory'
 
 // Actions
 
@@ -33,6 +34,7 @@ class App extends Component {
         <div>
           <h1>WeWork Survival</h1>
           <Stage/>
+          <Inventory/>
         </div>
       </MuiThemeProvider>
     )
