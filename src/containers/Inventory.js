@@ -5,7 +5,14 @@ import dragDrop from 'drag-drop'
 import addItem from '../actions/add-item'
 
 
-
+const imageStyle = {
+   position: 'absolute',
+   top: '50%',
+   left: '50%',
+   height: '30px',
+   marginTop: '-15px',
+   marginLeft: '-15px',
+}
 const style = {
     inventorybox: {
       marginTop: '10px',
@@ -61,9 +68,11 @@ class Inventory extends Component {
    drop(ev) {
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
+         var id = document.getElementById(data)
          if (ev.target.id.startsWith("inventory") && this.props.inventory.indexOf(data) == -1 ) {
            this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
+           ev.target.appendChild(document.getElementById(data))
+              id.setAttribute('style', 'position:absolute;top:27%;left:27%;height:30px;marginTop:-15px;marginLeft:-15px')
          }
          return
      }
