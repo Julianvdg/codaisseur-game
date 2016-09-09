@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy'
+import messageDialogBox from '../../actions/message-dialog-box'
+import emptyDialogBox from '../../actions/empty-dialog-box'
 
 const style = {
     mondy: {
@@ -16,11 +18,18 @@ class Entrance extends Component {
   enterWeWork(){
     const stageReference = 1
     this.props.changeStage(stageReference)
+    this.props.emptyDialogBox()
   }
 
   noKey(){
     this.props.mondy()
+    const message = "Mondy: He there stupid. You need a key to enter the building"
+    this.props.messageDialogBox(message)
   }
+
+
+
+
 
   render() {
 
@@ -61,4 +70,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { mondy  })(Entrance)
+export default connect(mapStateToProps, { mondy, messageDialogBox, emptyDialogBox  })(Entrance)
