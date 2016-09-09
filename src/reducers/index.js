@@ -1,5 +1,4 @@
-import players from './players'
+// import players from './players'
 
 module.exports = {
-  players,
 }
