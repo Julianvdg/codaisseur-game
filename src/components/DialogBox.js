@@ -27,8 +27,6 @@ const style = {
 
 class DialogBox extends Component {
 
-
-
   render() {
 
     return (
