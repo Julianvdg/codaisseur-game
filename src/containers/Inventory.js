@@ -79,7 +79,7 @@ class Inventory extends Component {
                   style={style.images}/>
            </div>
            <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
+             <img src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
                   style={style.images}/>
            </div>
            <div style={style.item}>

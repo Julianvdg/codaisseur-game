@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
+import messageDialogBox from '../../actions/message-dialog-box'
+import emptyDialogBox from '../../actions/empty-dialog-box'
 
 class Bar extends Component {
 
@@ -10,6 +12,18 @@ class Bar extends Component {
     this.props.changeStage(stageReference)
   }
 
+  messageDialogBox(){
+    const message = "Message"
+    this.props.messageDialogBox(message)
+  }
+
+  emptyDialogBox(){
+    // setTimeout(
+    //   () => { console.log('I do not leak!'); },
+    //   500
+    // )
+    this.props.emptyDialogBox()
+  }
 
   render() {
 
@@ -32,10 +46,18 @@ class Bar extends Component {
       cursor: 'pointer',
       backgroundColor: 'red'
     }
-    console.log(this.props)
+
     return(
       <div style={backgroundStyle}>
-        <div style={useLift} onClick={this.goDown.bind(this)}></div>
+        <div
+          style={useLift}
+          onMouseEnter={this.messageDialogBox.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          onClick={this.goDown.bind(this) }
+
+
+          ></div>
+
         <DialogBox/>
       </div>
     )
@@ -47,4 +69,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default Bar
+export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Bar)
