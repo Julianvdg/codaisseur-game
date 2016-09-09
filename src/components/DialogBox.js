@@ -3,13 +3,12 @@ import React, { Component, PropTypes } from 'react'
 
 const style = {
     box: {
-      width: '70vw',
+      width: '70%',
       height: '10vh',
       backgroundColor: 'black',
-      margin: '0 auto',
       position: 'absolute',
-      left: '12%',
-      top: '65vw',
+      left: '15%',
+      top: '85%',
       zIndex: '1',
     },
     text: {

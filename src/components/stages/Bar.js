@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import DialogBox from '../../components/DialogBox'
 
 class Bar extends Component {
 
@@ -34,6 +35,7 @@ class Bar extends Component {
       <div style={backgroundStyle}>
         <h1> Bar Component </h1>
         <div style={useLift} onClick={this.goDown.bind(this)}></div>
+        <DialogBox/>
       </div>
     )
   }
