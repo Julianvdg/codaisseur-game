@@ -50,7 +50,10 @@ class Inventory extends Component {
      }
 
    allowDrop(ev) {
+      false
          ev.preventDefault();
+
+
      }
 
 
@@ -58,53 +61,46 @@ class Inventory extends Component {
    drop(ev) {
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
+         if (ev.target.id.startsWith("inventory") && this.props.inventory.indexOf(data) == -1 ) {
            this.props.addItem(data)
            ev.target.appendChild(document.getElementById(data));
          }
-         ev.target.appendChild(document.getElementById(data));
+         return
      }
 
 
   render() {
+
     return (
       <div style={style.inventorybox}>
         <div style={style.tiles}>
-          <div id="inventory" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
-            <img id="bla" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
+          <div id="inventory1" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+            <img id="key1" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
 
            </div>
-           <div style={style.item}>
-             <img src={'http://emojipedia-us.s3.amazonaws.com/cache/29/fa/29fa71a263beee5f4bee9dfbf59b501f.png'}
-                  style={style.images}/>
+           <div id="inventory2" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
-                  style={style.images}/>
+           <div id="inventory3" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory4" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory5" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory6" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory7" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory8" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
-           <div style={style.item}>
-             <img src={'http://4.bp.blogspot.com/-YzFpA3jmvbU/TZzI9ixzRSI/AAAAAAAAMDM/5a8q46CvR4Y/s400/Question-Mark.png'}
-                  style={style.images}/>
+           <div id="inventory9" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+
            </div>
 
         </div>
