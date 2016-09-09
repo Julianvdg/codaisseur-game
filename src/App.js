@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Inventory from './containers/Inventory'
 
 // Actions
 
 
 // Components
-import Stage from './containers/Stage'
 
 // Material UI Components
 import mui from 'material-ui';
@@ -33,8 +31,6 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <h1>WeWork Survival</h1>
-          <Stage/>
-          <Inventory/>
         </div>
       </MuiThemeProvider>
     )
