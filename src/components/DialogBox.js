@@ -8,7 +8,7 @@ const style = {
       backgroundColor: 'black',
       margin: '0 auto',
       position: 'absolute',
-      left: '12vw',
+      left: '12%',
       top: '65vw',
       zIndex: '1',
     },
