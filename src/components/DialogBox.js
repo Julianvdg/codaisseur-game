@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-
+import { connect } from 'react-redux'
 
 const style = {
     box: {
@@ -28,7 +28,9 @@ const style = {
 class DialogBox extends Component {
 
 
+
   render() {
+
     return (
       <div style={style.box}>
 
@@ -45,4 +47,11 @@ class DialogBox extends Component {
   }
 }
 
-export default DialogBox
+const mapStateToProps = (state) => {
+  return {
+    message: state.dialogBox
+  }
+}
+
+
+export default connect(mapStateToProps, {})(DialogBox)
