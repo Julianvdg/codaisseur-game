@@ -44,7 +44,6 @@ class Bar extends Component {
       left: '350px',
       bottom: '170px',
       cursor: 'pointer',
-      backgroundColor: 'red'
     }
 
     return(

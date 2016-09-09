@@ -7,6 +7,7 @@ import changeStage from '../actions/change-stage'
 import Bar from '../components/stages/bar'
 import Entrance from '../components/stages/entrance'
 import Stairway from '../components/stages/stairway'
+import Reception from '../components/stages/reception'
 
 
 class Stage extends Component {
@@ -23,7 +24,10 @@ class Stage extends Component {
   renderCurrentStage() {
     const stages = [
        <Entrance changeStage={ this.changeStage.bind(this) }/>,
+       <Reception changeStage={ this.changeStage.bind(this) }/>,
+       <Stairway changeStage={ this.changeStage.bind(this) }/>,
        <Bar changeStage={ this.changeStage.bind(this) }/>,
+
      ]
 
     return (
