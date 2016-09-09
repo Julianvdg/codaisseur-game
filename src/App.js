@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Stage from './containers/Stage'
 import Inventory from './containers/Inventory'
+import DialogBox from './components/DialogBox'
+
 
 // Actions
 
@@ -27,6 +29,7 @@ const muiTheme = getMuiTheme({
   }
 });
 
+
 class App extends Component {
   render() {
     return (
@@ -34,6 +37,7 @@ class App extends Component {
         <div>
           <h1>WeWork Survival</h1>
           <Stage/>
+          <DialogBox/>
           <Inventory/>
         </div>
       </MuiThemeProvider>
