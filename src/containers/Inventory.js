@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper'
 
 const style = {
     inventorybox: {
-      marginTop: '2vh',
+      marginTop: '10px',
       width: '880px',
       margin: '0 auto',
       height: '12vh',
