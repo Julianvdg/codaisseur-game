@@ -4,6 +4,12 @@ import DialogBox from '../../components/DialogBox'
 
 class Entrance extends Component {
 
+  enterWeWork(){
+    const stageReference = 1
+    this.props.changeStage(stageReference)
+  }
+
+
   render() {
 
 
@@ -16,9 +22,19 @@ class Entrance extends Component {
       borderRadius: '10px',
       border: '10px solid #d3d3d3',
     };
+    let enter = {
+      height: '495px',
+      width: '285px',
+      position: 'absolute',
+      left: '250px',
+      bottom: '1px',
+      cursor: 'pointer',
+      backgroundColor: 'red'
+    }
 
     return(
       <div style={backgroundStyle}>
+      <div style={enter} onClick={this.enterWeWork.bind(this)}></div>
         <DialogBox/>
       </div>
     )
