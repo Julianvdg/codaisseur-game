@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
+import mondy from '../../actions/mondy'
 
 class Entrance extends Component {
 
@@ -9,6 +10,9 @@ class Entrance extends Component {
     this.props.changeStage(stageReference)
   }
 
+  noKey(){
+    this.props.mondy()
+  }
 
   render() {
 
@@ -34,7 +38,7 @@ class Entrance extends Component {
 
     return(
       <div style={backgroundStyle}>
-      <div style={enter} onClick={this.enterWeWork.bind(this)}></div>
+      <div style={enter} onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}></div>
         <DialogBox/>
       </div>
     )
@@ -42,8 +46,10 @@ class Entrance extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    isMondyThere: state.mondy
+  }
 }
 
 
-export default Entrance
+export default connect(mapStateToProps, { mondy  })(Entrance)
