@@ -23,16 +23,19 @@ const style = {
 
 class Entrance extends Component {
 
+  dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
+
   enterWeWork(){
-    const stageReference = 1
-    this.props.changeStage(stageReference)
-    this.props.emptyDialogBox()
+    const { changeStage, emptyDialogBox } = this.props
+    changeStage(1), emptyDialogBox() 
   }
 
   noKey(){
-    this.props.mondy()
-    const message = "Mondy: He there stupid. You need a key to enter the building"
-    this.props.messageDialogBox(message)
+    const { mondy, messageDialogBox } = this.props
+    messageDialogBox("I swear I had my keycard just now.. ")
+    setTimeout(() => {
+    mondy(), messageDialogBox("Mondy: He there stupid. Did you forget your keycard again? Take this")
+  }, 5000)
   }
 
   dragstart_handler(ev) {
@@ -71,7 +74,7 @@ class Entrance extends Component {
       borderRadius: '10px',
       border: '10px solid #d3d3d3',
     };
-    let enter = {
+    let frontDoor = {
       height: '495px',
       width: '285px',
       position: 'absolute',
@@ -83,17 +86,27 @@ class Entrance extends Component {
 
     return(
       <div style={backgroundStyle}>
-      <div style={enter} onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}></div>
+      <div
+        style={frontDoor}
+        onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}
+        onMouseEnter={this.dialogFrontDoor.bind(this) }>
+      </div>
+
       {this.props.isMondyThere ?
-          (<div><img onClick={this.enterWeWork.bind(this)}
-               style={style.mondy}
-               src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
-          <img id="keycard"
-               style={style.images}
-               src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
-               draggable="true"
-               onDragStart={this.dragstart_handler.bind(this)}/></div>)
-               : null}
+
+          (<div>
+              <img onClick={this.enterWeWork.bind(this)}
+                   style={style.mondy}
+                   src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
+
+              <img id="keycard"
+                   style={style.images}
+                   src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
+                   draggable="true"
+                   onDragStart={this.dragstart_handler.bind(this)}/>
+          </div>)
+
+          : null}
 
         <DialogBox/>
       </div>
