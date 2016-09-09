@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import showFirstStage from '../actions/show-first-stage'
+import changeStage from '../actions/change-stage'
 
 class Stage extends Component {
 
@@ -8,11 +9,16 @@ class Stage extends Component {
     this.props.showFirstStage()
   }
 
+  changeStage(){
+    this.props.changeStage()
+  }
+
   render() {
     return(
       <div>
         <h1> Stage Container </h1>
         <h2> { this.props.currentStage } </h2>
+        <button onClick={this.changeStage.bind(this)}> +1 </button>
       </div>
     )
   }
@@ -25,4 +31,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { showFirstStage })(Stage)
+export default connect(mapStateToProps, { showFirstStage, changeStage,  })(Stage)
