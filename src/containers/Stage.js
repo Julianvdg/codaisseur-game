@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import showFirstStage from '../actions/show-first-stage'
 import changeStage from '../actions/change-stage'
+import Bar from '../components/stages/bar'
 
 class Stage extends Component {
 
