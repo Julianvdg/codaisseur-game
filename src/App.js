@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <Stage/>
+          <Stage/><br/>
           <Inventory/>
         </div>
       </MuiThemeProvider>
