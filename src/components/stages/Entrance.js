@@ -11,6 +11,14 @@ const style = {
       left: '250px',
       bottom: '1px',
     },
+    images: {
+       position: 'absolute',
+       top: '62%',
+       left: '30%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+    },
   }
 
 class Entrance extends Component {
@@ -27,8 +35,28 @@ class Entrance extends Component {
     this.props.messageDialogBox(message)
   }
 
+  dragstart_handler(ev) {
+      console.log("invent")
+      // Add the target element's id to the data transfer object
+      ev.dataTransfer.setData("text/plain", ev.target.id);
+     }
+
+   allowDrop(ev) {
+         ev.preventDefault();
+     }
 
 
+
+   drop(ev) {
+         ev.preventDefault();
+         var data = ev.dataTransfer.getData("text");
+         if (ev.target.id == "inventory") {
+           this.props.addItem(data)
+           ev.target.appendChild(document.getElementById(data));
+           console.log(data)
+         }
+         ev.target.appendChild(document.getElementById(data));
+       }
 
 
   render() {
@@ -56,7 +84,17 @@ class Entrance extends Component {
     return(
       <div style={backgroundStyle}>
       <div style={enter} onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}></div>
-      {this.props.isMondyThere ? <img onClick={this.enterWeWork.bind(this)} style={style.mondy} src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>: null}
+      {this.props.isMondyThere ?
+          (<div><img onClick={this.enterWeWork.bind(this)}
+               style={style.mondy}
+               src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
+          <img id="keycard"
+               style={style.images}
+               src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
+               draggable="true"
+               onDragStart={this.dragstart_handler.bind(this)}/></div>)
+               : null}
+
         <DialogBox/>
       </div>
     )

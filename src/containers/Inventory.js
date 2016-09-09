@@ -71,8 +71,6 @@ class Inventory extends Component {
       <div style={style.inventorybox}>
         <div style={style.tiles}>
           <div id="inventory" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
-            <img id="bla" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
-
            </div>
            <div style={style.item}>
              <img src={'http://emojipedia-us.s3.amazonaws.com/cache/29/fa/29fa71a263beee5f4bee9dfbf59b501f.png'}
