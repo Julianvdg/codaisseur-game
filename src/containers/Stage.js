@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+
 import showFirstStage from '../actions/show-first-stage'
 import changeStage from '../actions/change-stage'
+
 import Bar from '../components/stages/bar'
+import Entrance from '../components/stages/entrance'
 
 class Stage extends Component {
 
@@ -19,6 +22,8 @@ class Stage extends Component {
       <div>
         <h1> Stage Container </h1>
         <h2> { this.props.currentStage } </h2>
+        <Bar/>
+        <Entrance/>
         <button onClick={this.changeStage.bind(this)}> +1 </button>
         <Bar/>
       </div>
