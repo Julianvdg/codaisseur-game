@@ -1,4 +1,5 @@
-// import players from './players'
+import stage from './stage'
 
 module.exports = {
+  stage,
 }
