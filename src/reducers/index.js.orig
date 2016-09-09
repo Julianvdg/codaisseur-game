@@ -1,0 +1,14 @@
+import stage from './stage'
+import mondy from './mondy'
+import dialogBox from './dialogbox'
+
+module.exports = {
+
+  stage,
+<<<<<<< e9d8d88dfd23846f171fb215975114dae4c3a79f
+  mondy,
+  dialogBox,
+=======
+  
+>>>>>>> edit index reducer
+}
