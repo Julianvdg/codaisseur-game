@@ -20,6 +20,7 @@ class Stage extends Component {
         <h1> Stage Container </h1>
         <h2> { this.props.currentStage } </h2>
         <button onClick={this.changeStage.bind(this)}> +1 </button>
+        <Bar/>
       </div>
     )
   }
