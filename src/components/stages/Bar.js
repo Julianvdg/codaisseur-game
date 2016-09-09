@@ -13,18 +13,21 @@ class Bar extends Component {
   render() {
 
     let backgroundStyle = {
-      backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473412718/bar_mkrl4k.jpg")',
-      width: '1200px',
-      height: '800px',
+      backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473426554/bar_b2hsc1.jpg")',
+      width: '900px',
+      height: '600px',
+      margin: '0 auto',
+      position: 'relative'
     };
 
     let useLift = {
-      height: '250px',
-      width: '110px',
+      height: '195px',
+      width: '85px',
       position: 'absolute',
-      left: '480px',
-      bottom: '132px',
-      cursor: 'pointer'
+      left: '350px',
+      bottom: '170px',
+      cursor: 'pointer',
+      backgroundColor: 'red'
     }
     console.log(this.props)
     return(
