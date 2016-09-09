@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react'
 const style = {
     box: {
       width: '70%',
-      height: '10vh',
+      height: '15%',
       backgroundColor: 'black',
       position: 'absolute',
       left: '15%',

@@ -32,6 +32,8 @@ class Bar extends Component {
       cursor: 'pointer',
       backgroundColor: 'red'
     }
+
+
     console.log(this.props)
     return(
       <div style={backgroundStyle}>
