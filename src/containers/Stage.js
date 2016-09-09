@@ -17,15 +17,20 @@ class Stage extends Component {
     this.props.changeStage()
   }
 
+  renderCurrentStage() {
+    const stages = [ <Entrance/>, <Bar/>, ]
+    return (
+      stages[this.props.currentStage]
+      )
+  }
+
   render() {
     return(
       <div>
         <h1> Stage Container </h1>
         <h2> { this.props.currentStage } </h2>
-        <Bar/>
-        <Entrance/>
-        <button onClick={this.changeStage.bind(this)}> +1 </button>
-        <Bar/>
+        {this.renderCurrentStage()}
+        <button onClick={this.changeStage.bind(this)}> Change The Stage!!11! </button>
       </div>
     )
   }
