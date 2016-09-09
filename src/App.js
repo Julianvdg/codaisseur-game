@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 
 // Components
+import Stage from './containers/Stage'
 
 // Material UI Components
 import mui from 'material-ui';
@@ -31,6 +32,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <h1>WeWork Survival</h1>
+          <Stage/>
         </div>
       </MuiThemeProvider>
     )
