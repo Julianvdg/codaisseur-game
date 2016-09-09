@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import Stage from './containers/Stage'
 
 // Actions
 
@@ -31,6 +32,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <h1>WeWork Survival</h1>
+          <Stage/>
         </div>
       </MuiThemeProvider>
     )
