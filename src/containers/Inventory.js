@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
+import dragDrop from 'drag-drop'
+import addItem from '../actions/add-item'
+
+
 
 const style = {
     inventorybox: {
@@ -38,14 +43,36 @@ const style = {
 
 class Inventory extends Component {
 
+  dragstart_handler(ev) {
+      console.log("invent")
+      // Add the target element's id to the data transfer object
+      ev.dataTransfer.setData("text/plain", ev.target.id);
+     }
+
+   allowDrop(ev) {
+         ev.preventDefault();
+     }
+
+
+
+   drop(ev) {
+         ev.preventDefault();
+         var data = ev.dataTransfer.getData("text");
+         if (ev.target.id == "inventory") {
+           this.props.addItem(data)
+           ev.target.appendChild(document.getElementById(data));
+         }
+         ev.target.appendChild(document.getElementById(data));
+     }
+
 
   render() {
     return (
       <div style={style.inventorybox}>
         <div style={style.tiles}>
-          <div style={style.item}>
-            <img src={'https://a2ua.com/key/key-012.jpg'}
-                 style={style.images}/>
+          <div id="inventory" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+            <img id="bla" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
+
            </div>
            <div style={style.item}>
              <img src={'http://emojipedia-us.s3.amazonaws.com/cache/29/fa/29fa71a263beee5f4bee9dfbf59b501f.png'}
@@ -85,5 +112,10 @@ class Inventory extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    inventory: state.inventory
+  }
+}
 
-export default Inventory
+export default connect(mapStateToProps, { addItem  })(Inventory)
