@@ -3,10 +3,14 @@ import React, { Component, PropTypes } from 'react'
 
 const style = {
     box: {
-      width: '90vw',
+      width: '70vw',
       height: '10vh',
       backgroundColor: 'black',
       margin: '0 auto',
+      position: 'absolute',
+      left: '12vw',
+      top: '65vw',
+      zIndex: '1',
     },
     text: {
       color: 'white',
