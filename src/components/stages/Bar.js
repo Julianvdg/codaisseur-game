@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Bar from '../components/stages/bar'
 
-class Stage extends Component {
+class Bar extends Component {
+
+
 
   render() {
+
     return(
       <div>
-        <h1> Stage Container </h1>
-        <Bar/>
+        <h1> Bar Component </h1>
       </div>
     )
   }
@@ -19,4 +20,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {})(Stage)
+export default Bar
