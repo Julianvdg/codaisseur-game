@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy'
 
+const style = {
+    mondy: {
+      position: 'absolute',
+      left: '250px',
+      bottom: '1px',
+    },
+  }
+
 class Entrance extends Component {
 
   enterWeWork(){
@@ -33,12 +41,13 @@ class Entrance extends Component {
       left: '250px',
       bottom: '1px',
       cursor: 'pointer',
-      backgroundColor: 'red'
+      // backgroundColor: 'red'
     }
 
     return(
       <div style={backgroundStyle}>
       <div style={enter} onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}></div>
+      {this.props.isMondyThere ? <img onClick={this.enterWeWork.bind(this)} style={style.mondy} src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>: null}
         <DialogBox/>
       </div>
     )
