@@ -5,7 +5,8 @@ class Bar extends Component {
 
 
   goDown(){
-    console.log('Ik ga naar beneden')
+    const stageReference = 0
+    this.props.changeStage(stageReference)
   }
 
 
@@ -25,11 +26,11 @@ class Bar extends Component {
       bottom: '132px',
       cursor: 'pointer'
     }
-
+    console.log(this.props)
     return(
       <div style={backgroundStyle}>
         <h1> Bar Component </h1>
-        <div style={useLift} onClick={this.goDown}></div>
+        <div style={useLift} onClick={this.goDown.bind(this)}></div>
       </div>
     )
   }
