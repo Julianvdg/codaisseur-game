@@ -50,7 +50,10 @@ class Inventory extends Component {
      }
 
    allowDrop(ev) {
+      false
          ev.preventDefault();
+
+
      }
 
 
