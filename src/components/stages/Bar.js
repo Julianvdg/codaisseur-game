@@ -7,13 +7,15 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 class Bar extends Component {
 
   goDown(){ this.props.changeStage(0) }
-  goHallway(){this.props.changeStage(0) }
+  goHallway(){ this.props.changeStage(0) }
+  goKitchen(){ this.props.changeStage(0) }
 
   dialogLift(){ this.props.messageDialogBox("Maybe I'll take the elevator down..") }
   dialogGame(){ this.props.messageDialogBox("All work and no play makes Jack a dull boy.. Let's play a game!" ) }
   dialogCacti(){ this.props.messageDialogBox("Cacti.. the plant of choice for lazy people") }
   dialogGrabCacti(){ this.props.messageDialogBox("Ouch!! What was I thinking!?") }
   dialogHallway(){ this.props.messageDialogBox("Better head towards the classroom") }
+  dialogKitchen(){ this.props.messageDialogBox("Phew, I could use a drink!") }
   dialogCeiling(){ this.props.messageDialogBox("Glass ceilings are so 2015... concrete ceilings are what is hip!") }
   emptyDialogBox(){this.props.emptyDialogBox()}
 
@@ -49,6 +51,13 @@ class Bar extends Component {
           ></div>
 
         <div
+          style={kitchen}
+          onMouseEnter={this.dialogKitchen.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          onClick={this.goKitchen.bind(this)}
+          ></div>
+
+        <div
           style={ceiling}
           onMouseEnter={this.dialogCeiling.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
@@ -64,9 +73,9 @@ const mapStateToProps = (state) => {
   return {}
 }
 
-
 export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Bar)
 
+// Styles
 
 let backgroundStyle = {
   backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473426554/bar_b2hsc1.jpg")',
@@ -121,12 +130,21 @@ let hallway = {
   backgroundColor: 'red'
 }
 
+let kitchen = {
+  height: '540px',
+  width: '80px',
+  position: 'absolute',
+  left: '0px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
 let ceiling = {
   height: '170px',
-  width: '730px',
+  width: '690px',
   position: 'absolute',
-  left: '50px',
+  left: '90px',
   bottom: '400px',
-  cursor: 'pointer',
   backgroundColor: 'red'
 }
