@@ -15,10 +15,12 @@ class Bar extends Component {
 
     let backgroundStyle = {
       backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473426554/bar_b2hsc1.jpg")',
-      width: '900px',
-      height: '600px',
+      width: '880px',
+      height: '580px',
       margin: '0 auto',
-      position: 'relative'
+      position: 'relative',
+      borderRadius: '10px',
+      border: '10px solid #d3d3d3',
     };
 
     let useLift = {
@@ -33,7 +35,6 @@ class Bar extends Component {
     console.log(this.props)
     return(
       <div style={backgroundStyle}>
-        <h1> Bar Component </h1>
         <div style={useLift} onClick={this.goDown.bind(this)}></div>
         <DialogBox/>
       </div>
