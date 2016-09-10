@@ -106,7 +106,7 @@ class Bar extends Component {
 
           <img
             style={basStyle}
-            src={'http://res.cloudinary.com/juvdg/image/upload/v1473506085/bas_u7ofvo.png'}
+            src={'http://res.cloudinary.com/juvdg/image/upload/v1473520323/baskortebeentjes_ldcopb.png'}
             onMouseEnter={this.dialogBas.bind(this) }
             onMouseLeave={this.emptyDialogBox.bind(this) }
             onClick={this.basAdvice.bind(this)}
@@ -206,6 +206,6 @@ let ceiling = {
 let basStyle = {
   position: 'absolute',
   left: '360px',
-  bottom: '-40px',
+  bottom: '0px',
   zIndex: '1'
 }
