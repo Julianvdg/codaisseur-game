@@ -4,21 +4,25 @@ import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 
+// Messages to be sent to the dialogbox from this component
 const messages = [
     { kind: "test", content: "in office going to classroom" },
 ]
 
 class Office extends Component {
 
+  // Navigation
   goIntoHallway(){this.props.changeStage(5)}
   goIntoClassroom(){this.props.changeStage(7)}
 
+  // Dialog actions
   dialogTest(){this.messageSelector("test")}
-  emptyDialogBox(){this.props.emptyDialogBox()}
 
+  // Standard dialog tools
+  emptyDialogBox(){this.props.emptyDialogBox()}
   messageSelector(kind){
-  const selectedMessage = messages.find((message) => message.kind == kind)
-  this.props.messageDialogBox(selectedMessage.content)
+    const selectedMessage = messages.find((message) => message.kind == kind)
+    this.props.messageDialogBox(selectedMessage.content)
   }
 
   render() {

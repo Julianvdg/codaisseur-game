@@ -22,12 +22,12 @@ const style = {
   }
 
 class Entrance extends Component {
-
+  
   dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
 
   enterWeWork(){
     const { changeStage, emptyDialogBox } = this.props
-    changeStage(1), emptyDialogBox() 
+    changeStage(1), emptyDialogBox()
   }
 
   noKey(){

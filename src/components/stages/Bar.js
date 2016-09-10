@@ -4,6 +4,7 @@ import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 
+// Messages to be sent to the dialogbox from this component
 const messages = [
     { kind: "lift", content: "Maybe I'll take the elevator down.." },
     { kind: "game", content: "All work and no play makes Jack a dull boy.. Let's play a game!" },
@@ -16,10 +17,12 @@ const messages = [
 
 class Bar extends Component {
 
+  // Navigation
   goDownToEntrance(){ this.props.changeStage(0) }
   goIntoHallway(){ this.props.changeStage(5) }
   goIntoKitchen(){ this.props.changeStage(4) }
 
+  // Dialog actions
   dialogLift(){this.messageSelector("lift")}
   dialogGame(){this.messageSelector("game")}
   dialogCacti(){ this.messageSelector("cacti")}
@@ -27,11 +30,12 @@ class Bar extends Component {
   dialogHallway(){ this.messageSelector("hallway")}
   dialogKitchen(){ this.messageSelector("kitchen")}
   dialogCeiling(){ this.messageSelector("ceiling")}
-  emptyDialogBox(){this.props.emptyDialogBox()}
 
+  // Standard dialog tools
+  emptyDialogBox(){this.props.emptyDialogBox()}
   messageSelector(kind){
-  const selectedMessage = messages.find((message) => message.kind == kind)
-  this.props.messageDialogBox(selectedMessage.content)
+    const selectedMessage = messages.find((message) => message.kind == kind)
+    this.props.messageDialogBox(selectedMessage.content)
   }
 
   render() {
