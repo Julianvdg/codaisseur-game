@@ -218,7 +218,7 @@ let enterBar = {
   right: '100px',
   bottom: '5px',
   cursor: 'pointer',
-  //
+  // backgroundColor: 'red'
 }
 
 
@@ -229,7 +229,7 @@ let downStairs = {
   left: '830px',
   bottom: '10px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 let water = {
@@ -239,7 +239,7 @@ let water = {
   left: '420px',
   bottom: '200px',
   cursor: 'pointer',
-  //
+  // backgroundColor: 'red'
 }
 
 let coffee = {
@@ -249,7 +249,7 @@ let coffee = {
   left: '5px',
   bottom: '170px',
   cursor: 'pointer',
-  //
+  // backgroundColor: 'red'
 }
 
 let letsGetSomeBeers = {
@@ -259,7 +259,7 @@ let letsGetSomeBeers = {
   left: '700px',
   bottom: '170px',
   cursor: 'pointer',
-  //
+  // backgroundColor: 'red'
 }
 
 let nienke = {
@@ -268,7 +268,7 @@ let nienke = {
   position: 'absolute',
   left: '230px',
   bottom: '170px',
-
+  backgroundColor: 'red'
 }
 
 let bram = {
@@ -277,5 +277,5 @@ let bram = {
   position: 'absolute',
   left: '710px',
   bottom: '370px',
-
+  backgroundColor: 'red'
 }
