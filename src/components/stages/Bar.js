@@ -14,8 +14,8 @@ const messages = [
     { kind: "hallway", content: "Better head towards the classroom" },
     { kind: "kitchen", content: "Phew, I could use a drink!" },
     { kind: "ceiling", content: "Glass ceilings are so 2015... concrete ceilings are what is hip!" },
-    { kind: "bas", content: "Phew, I could use a drink!" },
-    { kind: "basadvice", content: "Phew, I could use a drink!" },
+    { kind: "bas", content: "Ask Bas for advice" },
+    { kind: "basadvice", content: "Give Compliments!" },
 ]
 
 
