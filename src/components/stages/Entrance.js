@@ -67,19 +67,19 @@ class Entrance extends Component {
 
    drop(ev) {
          ev.preventDefault();
-         console.log("hi")
-        //  var data = ev.dataTransfer.getData("text",);
-        // //  if (ev.target.id == "inventory") {
-        // //    this.props.addItem(data)
-        // //    ev.target.appendChild(document.getElementById(data));
-        // //    console.log(data)
-        // //  }
-        //
-        // if(data == "keycard") {
-        //   // ev.dataTransfer.dropEffect = "none";
-        //   this.enterWeWork()
-        //   this.props.removeItem(this.state.indexOf(data))
-        //   }
+
+         var data = ev.dataTransfer.getData("text",);
+        //  if (ev.target.id == "inventory") {
+        //    this.props.addItem(data)
+        //    ev.target.appendChild(document.getElementById(data));
+
+        if(data == "keycard") {
+          // ev.dataTransfer.dropEffect = "none";
+          this.enterWeWork()
+          this.props.removeItem(this.props.inventory.indexOf(data))
+
+          }
+
        }
 
        getIds() {

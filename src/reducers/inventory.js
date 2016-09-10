@@ -11,8 +11,8 @@ export default function updateInventory( state = [], { type, payload  } ){
 
       case REMOVE_ITEM:
       const index = payload
-      const bong = state.splice(index,1);
-      console.log(bong)
+      console.log(index)
+      
       return state
 
     default :
