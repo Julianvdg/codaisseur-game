@@ -30,6 +30,7 @@ class Bar extends Component {
   goDownToEntrance(){ this.props.changeStage(0) }
   goIntoHallway(){ this.props.changeStage(5) }
   goIntoKitchen(){ this.props.changeStage(4) }
+  goToArcade(){this.props.changeStage(9)}
 
   // Dialog actions
   dialogLift(){this.messageSelector("lift")}
@@ -61,6 +62,7 @@ class Bar extends Component {
           style={playGame}
           onMouseEnter={this.dialogGame.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
+          onClick={this.goToArcade.bind(this) }
           ></div>
 
         <div
