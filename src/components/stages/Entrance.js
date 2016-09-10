@@ -4,8 +4,8 @@ import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
-import stageItem from '../stageItem'
-import inventoryItem from '../inventoryItem'
+import StageItem from '../StageItem'
+import InventoryItem from '../InventoryItem'
 
 const style = {
     mondy: {
@@ -15,8 +15,8 @@ const style = {
     },
     images: {
        position: 'absolute',
-      //  top: '62%',
-      //  left: '30%',
+       top: '62%',
+       left: '30%',
        height: '50px',
        marginTop: '-25px',
        marginLeft: '-25px',
@@ -75,8 +75,8 @@ class Entrance extends Component {
        }
 
     haveKey() {
-         const {inventory} = this.props
-        inventory.filter((e) => { return e.id == "keycard".length > 0})
+         
+        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
        }
 
 
@@ -122,7 +122,7 @@ class Entrance extends Component {
               <img onClick={this.enterWeWork.bind(this)}
                    style={style.mondy}
                    src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
-                   <stageItem id="keycard"
+                   <StageItem id="keycard"
                         style={style.images}
                         src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}/>
           </div>)

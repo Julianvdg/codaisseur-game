@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import dragDrop from 'drag-drop'
 import addItem from '../actions/add-item'
-import inventoryItem from '../components/inventoryItem'
-import stageItem from  '../components/stageItem'
+import InventoryItem from '../components/InventoryItem'
+import StageItem from  '../components/StageItem'
 
 
 const imageStyle = {
@@ -55,7 +55,7 @@ class Inventory extends Component {
 
   renderItem(item, index) {
     return (
-      <inventoryItem key={ index }
+      <InventoryItem key={ index }
         {...item}
         />
       )
@@ -64,7 +64,7 @@ class Inventory extends Component {
   itemPlug(item) {
     var id = document.getElementById(item)
     const src = id.getAttribute('src');
-    const newItem = Object.assign({}, { id: item, url: src})
+    const newItem = Object.assign({}, { id: item, src: src})
     this.props.addItem(newItem)
 
   }
@@ -106,7 +106,6 @@ class Inventory extends Component {
 
           <div id="inventory1" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
             <img id="key1" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
-
            </div>
            {/* <div id="inventory2" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
            <img id="keycard4"
@@ -115,9 +114,8 @@ class Inventory extends Component {
                 draggable="true"
                 onDragStart={this.dragstart_handler.bind(this)}/>
            </div>  */}
-           <inventoryItem id="key" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} />
 
-           {/* { inventory.map(this.renderItem.bind(this)) } */}
+           { inventory.map(this.renderItem.bind(this)) }
 
            {/* <div id="inventory3" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
 

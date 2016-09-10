@@ -3,7 +3,7 @@ import { dragDrop } from 'drag-drop'
 
 const styles1 = {
   images: {
-     position: 'absolute',
+     position: 'relative',
      top: '50%',
      left: '50%',
      height: '30px',
@@ -15,7 +15,7 @@ const styles1 = {
     width: 60,
     borderRadius: '50%',
     boxShadow: '0px 1px 10px grey',
-    // position: 'absolute',
+    position: 'relative',
     marginTop: '12px',
     marginRight: '35px',
     display: 'inline-block',
@@ -23,7 +23,7 @@ const styles1 = {
     },
   }
 
-export default class inventoryItem extends Component {
+export default class InventoryItem extends Component {
 
 
     dragstart_handler(ev) {
@@ -48,7 +48,7 @@ export default class inventoryItem extends Component {
   render() {
     return (
       <div style={styles1.item}>
-      <img id={this.props.id} style={this.props.style} src={this.props.url} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
+      <img id={this.props.id} style={styles1.images} src={this.props.src} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
       </div>
     )
   }
