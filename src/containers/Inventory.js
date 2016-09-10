@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import dragDrop from 'drag-drop'
 import addItem from '../actions/add-item'
+import inventoryItem from '../components/inventoryItem'
+import stageItem from  '../components/stageItem'
 
 
 const imageStyle = {
@@ -50,47 +52,74 @@ const style = {
 
 class Inventory extends Component {
 
+
+  renderItem(item, index) {
+    return (
+      <inventoryItem key={ index }
+        {...item}
+        />
+      )
+  }
+
+  itemPlug(item) {
+    var id = document.getElementById(item)
+    const src = id.getAttribute('src');
+    const newItem = Object.assign({}, { id: item, url: src})
+    this.props.addItem(newItem)
+
+  }
+
   dragstart_handler(ev) {
-      console.log("invent")
+      console.log(ev.target)
       // Add the target element's id to the data transfer object
       ev.dataTransfer.setData("text/plain", ev.target.id);
      }
 
    allowDrop(ev) {
-      false
          ev.preventDefault();
 
+        //  ev.dataTransfer.dropEffect = "none";
 
      }
-
-
 
    drop(ev) {
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
          var id = document.getElementById(data)
-         if (ev.target.id.startsWith("inventory") && this.props.inventory.indexOf(data) == -1 ) {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data))
-              id.setAttribute('style', 'position:absolute;top:27%;left:27%;height:30px;marginTop:-15px;marginLeft:-15px')
+         if (ev.target.id.startsWith("inventory")) {
+           this.itemPlug(data)
+          //  console.log(data)
+          //     id.setAttribute('style', 'position:absolute;top:27%;left:27%;height:30px;marginTop:-15px;marginLeft:-15px')
+          //     console.log(id.id)
          }
          return
      }
 
 
+
   render() {
+    const { inventory } = this.props
 
     return (
       <div style={style.inventorybox}>
-        <div style={style.tiles}>
+        <div id="inventory" style={style.tiles} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+
           <div id="inventory1" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
             <img id="key1" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
 
            </div>
-           <div id="inventory2" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+           {/* <div id="inventory2" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+           <img id="keycard4"
+                style={style.images}
+                src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
+                draggable="true"
+                onDragStart={this.dragstart_handler.bind(this)}/>
+           </div>  */}
+           <inventoryItem id="key" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} />
 
-           </div>
-           <div id="inventory3" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+           {/* { inventory.map(this.renderItem.bind(this)) } */}
+
+           {/* <div id="inventory3" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
 
            </div>
            <div id="inventory4" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
@@ -110,7 +139,7 @@ class Inventory extends Component {
            </div>
            <div id="inventory9" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
 
-           </div>
+           </div> */}
 
         </div>
       </div>

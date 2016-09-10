@@ -4,6 +4,8 @@ import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import stageItem from '../stageItem'
+import inventoryItem from '../inventoryItem'
 
 const style = {
     mondy: {
@@ -13,8 +15,8 @@ const style = {
     },
     images: {
        position: 'absolute',
-       top: '62%',
-       left: '30%',
+      //  top: '62%',
+      //  left: '30%',
        height: '50px',
        marginTop: '-25px',
        marginLeft: '-25px',
@@ -22,7 +24,7 @@ const style = {
   }
 
 class Entrance extends Component {
-  
+
   dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
 
   enterWeWork(){
@@ -42,24 +44,42 @@ class Entrance extends Component {
       console.log("invent")
       // Add the target element's id to the data transfer object
       ev.dataTransfer.setData("text/plain", ev.target.id);
+      console.log(ev.target)
      }
 
    allowDrop(ev) {
          ev.preventDefault();
+        //  var data = ev.dataTransfer.getData("text/html");
+        //  const id = ev.target.getAttribute("draggable")
+        //  console.log(data)
+        //  if (ev.target.getAttribute("id") !== "keycard") ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
+        //  var data = ev.dataTransfer.getData("id,");
+        //  if(data == "key1") ev.dataTransfer.dropEffect = "none";
+        //  if(data !== "keycard") ev.dataTransfer.dropEffect = "none";
      }
 
 
 
    drop(ev) {
          ev.preventDefault();
-         var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
-           console.log(data)
-         }
-         ev.target.appendChild(document.getElementById(data));
+         console.log(ev.target.id)
+         var data = ev.dataTransfer.getData("text",);
+        //  if (ev.target.id == "inventory") {
+        //    this.props.addItem(data)
+        //    ev.target.appendChild(document.getElementById(data));
+        //    console.log(data)
+        //  }
+        if(data == "keycard") {
+          // ev.dataTransfer.dropEffect = "none";
+          this.enterWeWork() }
        }
+
+    haveKey() {
+         const {inventory} = this.props
+        inventory.filter((e) => { return e.id == "keycard".length > 0})
+       }
+
+
 
 
   render() {
@@ -84,26 +104,27 @@ class Entrance extends Component {
       // backgroundColor: 'red'
     }
 
+
+
     return(
       <div style={backgroundStyle}>
       <div
         style={frontDoor}
         onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}
-        onMouseEnter={this.dialogFrontDoor.bind(this) }>
+        onMouseEnter={this.dialogFrontDoor.bind(this) }
+        onDrop={this.drop.bind(this)}
+        onDragOver={this.allowDrop.bind(this)}>
       </div>
 
-      {this.props.isMondyThere ?
+      {this.props.isMondyThere && !this.haveKey() ?
 
           (<div>
               <img onClick={this.enterWeWork.bind(this)}
                    style={style.mondy}
                    src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
-
-              <img id="keycard"
-                   style={style.images}
-                   src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
-                   draggable="true"
-                   onDragStart={this.dragstart_handler.bind(this)}/>
+                   <stageItem id="keycard"
+                        style={style.images}
+                        src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}/>
           </div>)
 
           : null}
@@ -116,7 +137,8 @@ class Entrance extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isMondyThere: state.people.mondy
+    isMondyThere: state.people.mondy,
+    inventory: state.inventory
   }
 }
 
