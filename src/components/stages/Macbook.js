@@ -14,11 +14,12 @@ class Macbook extends Component {
     return(
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
+        <input />
         <DialogBox/>
       </div>
     )
   }
-  
+
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
 
@@ -57,7 +58,7 @@ export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Ma
 // Styles
 
 let backgroundStyle = {
-  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473429941/trappenhuis_fif5tk.jpg")',
+  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473502430/macbook_vlq7h0.png")',
   width: '880px',
   height: '580px',
   margin: '0 auto',
