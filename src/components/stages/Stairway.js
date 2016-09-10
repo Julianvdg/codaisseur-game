@@ -84,7 +84,7 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let downStairs = {
@@ -94,5 +94,5 @@ let downStairs = {
   right: '400px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }

@@ -171,7 +171,7 @@ let classRoom = {
   right: '0px',
   bottom: '0px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let theZone = {
@@ -181,7 +181,7 @@ let theZone = {
   left: '160px',
   bottom: '300px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let hallway = {
@@ -191,7 +191,7 @@ let hallway = {
   left: '0px',
   bottom: '0px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let miriamStyle = {
