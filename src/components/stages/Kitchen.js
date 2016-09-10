@@ -11,8 +11,10 @@ const messages = [
     { kind: "coffee", content: "But first Coffee!" },
     { kind: "beer", content: "Friday!? Let's get some beer!" },
     { kind: "water", content: "Water (H2O) is a polar inorganic compound that is at room temperature a tasteless and odorless liquid" },
-    { kind: "bram", content: "You know, I feel like some candy.." },
-    { kind: "nienke", content: "I wish I could go outside on a day like this" },
+    { kind: "bram", content: "Get advice from Bram" },
+    { kind: "nienke", content: "Get advice from Nienke" },
+    { kind: "bramadvice", content: "Try not to drink every evening after programming" },
+    { kind: "nienkeadvice", content: "Don't compare yourself to the others" },
 ]
 
 const style = {
@@ -85,6 +87,8 @@ class Kitchen extends Component {
   dialogBeer(){this.messageSelector("beer")}
   dialogNienke(){this.messageSelector("nienke")}
   dialogBram(){this.messageSelector("bram")}
+  nienkeAdvice(){this.messageSelector("nienkeadvice")}
+  bramAdvice(){this.messageSelector("bramadvice")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -176,14 +180,14 @@ class Kitchen extends Component {
           style={nienke}
           onMouseEnter={this.dialogNienke.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getFruitWater.bind(this)}
+          onClick={this.nienkeAdvice.bind(this)}
           ></div>
 
         <div
           style={bram}
           onMouseEnter={this.dialogBram.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getFruitWater.bind(this)}
+          onClick={this.bramAdvice.bind(this)}
           ></div>
       </div>
     )
