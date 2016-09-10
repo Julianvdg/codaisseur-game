@@ -257,5 +257,5 @@ let enterBar = {
   left: '50px',
   top: '80px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  
 }

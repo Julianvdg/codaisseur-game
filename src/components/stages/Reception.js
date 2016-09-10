@@ -168,7 +168,7 @@ let useLift = {
   left: '350px',
   bottom: '170px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let lollys = {
@@ -178,7 +178,7 @@ let lollys = {
   left: '160px',
   bottom: '300px',
   cursor: 'pointer',
-  // backgroundColor: 'red'
+  //
 }
 
 let flowers = {
@@ -188,7 +188,7 @@ let flowers = {
   left: '550px',
   bottom: '260px',
   cursor: 'pointer',
-  // backgroundColor: 'red'
+  //
 }
 
 let stairs = {
@@ -198,7 +198,7 @@ let stairs = {
   left: '800px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let outside = {
@@ -208,5 +208,5 @@ let outside = {
   left: '0px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }

@@ -119,7 +119,7 @@ class Entrance extends Component {
       left: '250px',
       bottom: '1px',
       cursor: 'pointer',
-      // backgroundColor: 'red'
+      //
     }
 
     return(

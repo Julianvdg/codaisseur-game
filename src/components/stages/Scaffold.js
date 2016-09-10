@@ -114,7 +114,7 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 
@@ -125,7 +125,7 @@ let useLift = {
   left: '350px',
   bottom: '170px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let lollys = {
@@ -135,7 +135,7 @@ let lollys = {
   left: '160px',
   bottom: '300px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let playGame = {
@@ -145,7 +145,7 @@ let playGame = {
   left: '700px',
   bottom: '140px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let hallway = {
@@ -155,7 +155,7 @@ let hallway = {
   left: '800px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let kitchen = {
@@ -165,7 +165,7 @@ let kitchen = {
   left: '0px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let office = {
@@ -174,5 +174,5 @@ let office = {
   position: 'absolute',
   left: '330px',
   bottom: '400px',
-  backgroundColor: 'red'
+
 }
