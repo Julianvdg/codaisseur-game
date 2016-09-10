@@ -8,6 +8,7 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 const messages = [
     { kind: "bar", content: "The breakroom or a.k.a bar. Is it friday today?" },
     { kind: "downstairs", content: "Maybe I should go downstairs" },
+    { kind: "upstairs", content: "Go to the recruiter" },
 ]
 
 
@@ -29,6 +30,8 @@ class Stairway extends Component {
   // Dialog actions
   dialogBar(){this.messageSelector("bar")}
   dialogDownStairs(){this.messageSelector("downstairs")}
+  dialogUpStairs(){this.messageSelector("upstairs")}
+
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -56,7 +59,7 @@ class Stairway extends Component {
         <div
           style={toRecruiter}
           onClick={this.goToRecruiter.bind(this) }
-          onMouseEnter={this.dialogDownStairs.bind(this) }
+          onMouseEnter={this.dialogUpStairs.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>
       </div>
