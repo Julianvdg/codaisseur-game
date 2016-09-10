@@ -6,12 +6,11 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "bar", content: "The breakroom or a.k.a bar. Is it friday today?" },
-    { kind: "downstairs", content: "Maybe I should go downstairs" },
+    { kind: "bar", content: "Maybe just a quick break before coding" },
+    { kind: "office", content: "He took a face from the ancient gallery... and he walked on down the hall!" },
 ]
 
-
-class Stairway extends Component {
+class Hallway extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
@@ -23,11 +22,11 @@ class Stairway extends Component {
 
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
-  goDownStairs(){this.props.changeStage(1)}
+  goIntoOffice(){this.props.changeStage(6)}
 
   // Dialog actions
   dialogBar(){this.messageSelector("bar")}
-  dialogDownStairs(){this.messageSelector("downstairs")}
+  dialogOffice(){this.messageSelector("office")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -35,6 +34,7 @@ class Stairway extends Component {
     const selectedMessage = messages.find((message) => message.kind == kind)
     this.props.messageDialogBox(selectedMessage.content)
   }
+
 
 
   renderHitBoxes(){
@@ -46,22 +46,25 @@ class Stairway extends Component {
           onMouseEnter={this.dialogBar.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>
+
         <div
-          style={downStairs}
-          onClick={this.goDownStairs.bind(this) }
-          onMouseEnter={this.dialogDownStairs.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }>
-        </div>
+          style={office}
+          onClick={this.goIntoOffice.bind(this) }
+          onMouseEnter={this.dialogOffice.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
       </div>
     )
   }
+
 }
 
 const mapStateToProps = (state) => {
   return {}
 }
 
-export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Stairway)
+
+export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Hallway)
 
 // Styles
 
@@ -77,22 +80,22 @@ let backgroundStyle = {
 
 // Hitboxes
 
+
 let enterBar = {
-  height: '400px',
-  width: '180px',
+  height: '150px',
+  width: '800px',
   position: 'absolute',
-  right: '160px',
-  bottom: '80px',
+  right: '40px',
+  bottom: '20px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
-let downStairs = {
-  height: '200px',
-  width: '500px',
+let office = {
+  height: '180px',
+  width: '340px',
   position: 'absolute',
-  right: '400px',
-  bottom: '20px',
-  cursor: 'pointer',
+  left: '270px',
+  bottom: '400px',
   backgroundColor: 'red'
 }
