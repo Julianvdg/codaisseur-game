@@ -8,6 +8,8 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 const messages = [
     { kind: "bar", content: "Maybe just a quick break before coding" },
     { kind: "office", content: "He took a face from the ancient gallery... and he walked on down the hall!" },
+    { kind: "angela", content: "Now that you mention it.. I am a little thirsty" },
+    { kind: "steffi", content: "Maybe an espresso would be nice" },
 ]
 
 class Hallway extends Component {
@@ -27,6 +29,8 @@ class Hallway extends Component {
   // Dialog actions
   dialogBar(){this.messageSelector("bar")}
   dialogOffice(){this.messageSelector("office")}
+  dialogSteffi(){this.messageSelector("steffi")}
+  dialogAngela(){this.messageSelector("angela")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -53,6 +57,20 @@ class Hallway extends Component {
           onMouseEnter={this.dialogOffice.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
+
+        <div
+          style={angela}
+          // onClick={this.goIntoOffice.bind(this) }
+          onMouseEnter={this.dialogAngela.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
+
+        <div
+          style={steffi}
+          // onClick={this.goIntoOffice.bind(this) }
+          onMouseEnter={this.dialogSteffi.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
       </div>
     )
   }
@@ -69,7 +87,7 @@ export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Ha
 // Styles
 
 let backgroundStyle = {
-  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473429941/trappenhuis_fif5tk.jpg")',
+  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473497410/hallway_wobnt7.jpg")',
   width: '880px',
   height: '580px',
   margin: '0 auto',
@@ -86,16 +104,34 @@ let enterBar = {
   width: '800px',
   position: 'absolute',
   right: '40px',
-  bottom: '20px',
+  bottom: '0px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
 let office = {
-  height: '180px',
+  height: '280px',
   width: '340px',
   position: 'absolute',
-  left: '270px',
-  bottom: '400px',
+  left: '390px',
+  bottom: '300px',
+  backgroundColor: 'red'
+}
+
+let angela = {
+  height: '200px',
+  width: '150px',
+  position: 'absolute',
+  left: '100px',
+  bottom: '150px',
+  backgroundColor: 'red'
+}
+
+let steffi = {
+  height: '200px',
+  width: '150px',
+  position: 'absolute',
+  left: '250px',
+  bottom: '150px',
   backgroundColor: 'red'
 }
