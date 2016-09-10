@@ -4,6 +4,7 @@ import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import Sound from 'react-sound'
 
 const style = {
     mondy: {
@@ -22,7 +23,7 @@ const style = {
   }
 
 class Entrance extends Component {
-  
+
   dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
 
   enterWeWork(){
@@ -104,6 +105,13 @@ class Entrance extends Component {
                    src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
                    draggable="true"
                    onDragStart={this.dragstart_handler.bind(this)}/>
+               <Sound
+                  url="http://www.wavsource.com/snds_2016-08-21_1204101428963685/sfx/ahem_x.wav"
+                  playStatus={Sound.status.PLAYING}
+                  playFromPosition={300 /* in milliseconds */}
+                  onLoading={this.handleSongLoading}
+                  onPlaying={this.handleSongPlaying}
+                  onFinishedPlaying={this.handleSongFinishedPlaying} />
           </div>)
 
           : null}
