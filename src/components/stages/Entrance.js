@@ -76,7 +76,7 @@ class Entrance extends Component {
         if(data == "keycard") {
           // ev.dataTransfer.dropEffect = "none";
           this.enterWeWork()
-          this.props.removeItem(this.props.inventory.indexOf(data))
+        
 
           }
 
@@ -128,7 +128,7 @@ class Entrance extends Component {
       <div style={backgroundStyle}>
       <div
         style={frontDoor}
-        onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}
+        onClick={this.props.isMondyThere ? null  : this.noKey.bind(this)}
         onMouseEnter={this.dialogFrontDoor.bind(this) }
         onDrop={this.drop.bind(this)}
         onDragOver={this.allowDrop.bind(this)}>
