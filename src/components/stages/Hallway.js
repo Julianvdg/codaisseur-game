@@ -8,8 +8,10 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 const messages = [
     { kind: "bar", content: "Maybe just a quick break before coding" },
     { kind: "office", content: "He took a face from the ancient gallery... and he walked on down the hall!" },
-    { kind: "angela", content: "Now that you mention it.. I am a little thirsty" },
-    { kind: "steffi", content: "Maybe an espresso would be nice" },
+    { kind: "angela", content: "Get advice from Angela" },
+    { kind: "steffi", content: "Get advice from Stefano" },
+    { kind: "stefanoadvice", content: "Try to practice the content before you enter the course" },
+    { kind: "angelaadvice", content: "Keep calm and you will get there" },
 ]
 
 class Hallway extends Component {
@@ -17,6 +19,7 @@ class Hallway extends Component {
     return(
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
+
         <DialogBox/>
       </div>
     )
@@ -31,6 +34,8 @@ class Hallway extends Component {
   dialogOffice(){this.messageSelector("office")}
   dialogSteffi(){this.messageSelector("steffi")}
   dialogAngela(){this.messageSelector("angela")}
+  stefanoAdvice(){this.messageSelector("stefanoadvice")}
+  angelaAdvice(){this.messageSelector("angelaadvice")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -60,14 +65,14 @@ class Hallway extends Component {
 
         <div
           style={angela}
-          // onClick={this.goIntoOffice.bind(this) }
+          onClick={this.angelaAdvice.bind(this) }
           onMouseEnter={this.dialogAngela.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
 
         <div
           style={steffi}
-          // onClick={this.goIntoOffice.bind(this) }
+          onClick={this.stefanoAdvice.bind(this) }
           onMouseEnter={this.dialogSteffi.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>

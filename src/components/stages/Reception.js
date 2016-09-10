@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import StageItem from '../StageItem'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -39,16 +40,12 @@ class Reception extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
-      <img id="lolly"
+      <StageItem id="lolly"
            style={style.lollyimg}
-           src={'http://emojipedia-us.s3.amazonaws.com/cache/12/b1/12b1b8880776afc0a392fecec83058d0.png'}
-           draggable="true"
-           onDragStart={this.dragstart_handler.bind(this)}/>
-       <img id="flowers"
+           src={'http://emojipedia-us.s3.amazonaws.com/cache/12/b1/12b1b8880776afc0a392fecec83058d0.png'}/>
+       <StageItem id="flowers"
             style={style.flowersimg}
-            src={'https://www.emojibase.com/resources/img/emojis/apple/1f490.png'}
-            draggable="true"
-            onDragStart={this.dragstart_handler.bind(this)}/>
+            src={'https://www.emojibase.com/resources/img/emojis/apple/1f490.png'}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>

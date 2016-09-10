@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import StageItem from '../StageItem'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -11,8 +12,10 @@ const messages = [
     { kind: "coffee", content: "But first Coffee!" },
     { kind: "beer", content: "Friday!? Let's get some beer!" },
     { kind: "water", content: "Water (H2O) is a polar inorganic compound that is at room temperature a tasteless and odorless liquid" },
-    { kind: "bram", content: "You know, I feel like some candy.." },
-    { kind: "nienke", content: "I wish I could go outside on a day like this" },
+    { kind: "bram", content: "Get advice from Bram" },
+    { kind: "nienke", content: "Get advice from Nienke" },
+    { kind: "bramadvice", content: "Try not to drink every evening after programming" },
+    { kind: "nienkeadvice", content: "Don't compare yourself to the others" },
 ]
 
 const style = {
@@ -52,21 +55,15 @@ class Kitchen extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
-      <img id="coffee"
-           style={style.coffeeimg}
-           src={'http://emojipedia-us.s3.amazonaws.com/cache/64/11/64118e55c629ae7eea058d3320796d1d.png'}
-           draggable="true"
-           onDragStart={this.dragstart_handler.bind(this)}/>
-       <img id="water"
-            style={style.waterimg}
-            src={'http://www.glenrosebluegrass.com/images/CivicAlerts/5/_glass-of-water.png'}
-            draggable="true"
-            onDragStart={this.dragstart_handler.bind(this)}/>
-        <img id="beer"
+        <StageItem id="coffee"
+             style={style.coffeeimg}
+             src={'http://emojipedia-us.s3.amazonaws.com/cache/64/11/64118e55c629ae7eea058d3320796d1d.png'}/>
+        <StageItem id="water"
+              style={style.waterimg}
+              src={'http://www.glenrosebluegrass.com/images/CivicAlerts/5/_glass-of-water.png'}/>
+        <StageItem id="beer"
              style={style.beerimg}
-             src={'https://www.emojibase.com/resources/img/emojis/apple/x1f37a.png.pagespeed.ic.BvtGLK8p4U.png'}
-             draggable="true"
-             onDragStart={this.dragstart_handler.bind(this)}/>
+             src={'https://www.emojibase.com/resources/img/emojis/apple/x1f37a.png.pagespeed.ic.BvtGLK8p4U.png'}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>
@@ -85,6 +82,8 @@ class Kitchen extends Component {
   dialogBeer(){this.messageSelector("beer")}
   dialogNienke(){this.messageSelector("nienke")}
   dialogBram(){this.messageSelector("bram")}
+  nienkeAdvice(){this.messageSelector("nienkeadvice")}
+  bramAdvice(){this.messageSelector("bramadvice")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -176,14 +175,14 @@ class Kitchen extends Component {
           style={nienke}
           onMouseEnter={this.dialogNienke.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getFruitWater.bind(this)}
+          onClick={this.nienkeAdvice.bind(this)}
           ></div>
 
         <div
           style={bram}
           onMouseEnter={this.dialogBram.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getFruitWater.bind(this)}
+          onClick={this.bramAdvice.bind(this)}
           ></div>
       </div>
     )
