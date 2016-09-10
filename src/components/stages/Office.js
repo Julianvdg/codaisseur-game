@@ -108,7 +108,7 @@ class Office extends Component {
               style={miriamStyle}
               src={'http://res.cloudinary.com/juvdg/image/upload/v1473501492/miriamt_s0zrf7.png'}
               onMouseEnter={this.props.askquestion ? this.dialogquestion.bind(this) : this.dialogMiriam.bind(this) }
-              onMouseLeave={this.emptyDialogBox.bind(this) }
+              // onMouseLeave={this.emptyDialogBox.bind(this) }
               onClick={this.miriamsQuiz.bind(this)}
             />
           </div>
