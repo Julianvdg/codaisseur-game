@@ -4,6 +4,7 @@ import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 import StageItem from '../StageItem'
+import removeItem from '../../actions/remove-item'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -94,13 +95,17 @@ class Reception extends Component {
 
    drop(ev) {
          ev.preventDefault();
-         var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
-           console.log(data)
-         }
-         ev.target.appendChild(document.getElementById(data));
+
+         var data = ev.dataTransfer.getData("text",);
+        //  if (ev.target.id == "inventory") {
+        //    this.props.addItem(data)
+        //    ev.target.appendChild(document.getElementById(data));
+
+
+          // ev.dataTransfer.dropEffect = "none";
+          // this.props.removeItem(this.props.inventory.indexOf(data))
+          //
+
        }
 
 
@@ -120,6 +125,7 @@ class Reception extends Component {
           onMouseEnter={this.dialogLollys.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           onClick={this.showLolly}
+
           ></div>
 
         <div
@@ -142,10 +148,17 @@ class Reception extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+
+    inventory: state.inventory,
+
+  }
 }
 
-export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Reception)
+
+
+
+export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox, removeItem })(Reception)
 
 // Styles
 
