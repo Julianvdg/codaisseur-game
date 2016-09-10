@@ -2,10 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy-people'
+import mondyRemove from '../../actions/mondy-remove-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 import StageItem from '../StageItem'
 import InventoryItem from '../InventoryItem'
+import openDoor from '../../actions/opendoor'
+import Sound from 'react-sound'
 
 const style = {
     mondy: {
@@ -28,8 +31,17 @@ class Entrance extends Component {
   dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
 
   enterWeWork(){
-    const { changeStage, emptyDialogBox } = this.props
-    changeStage(1), emptyDialogBox()
+    this.props.mondyRemove()
+    const { changeStage, emptyDialogBox, openDoor } = this.props
+
+    setTimeout(() => {
+      emptyDialogBox()}, 2000)
+
+    openDoor()
+
+    setTimeout(() => {
+      changeStage(1)
+    }, 2000)
   }
 
   noKey(){
@@ -44,7 +56,6 @@ class Entrance extends Component {
       console.log("invent")
       // Add the target element's id to the data transfer object
       ev.dataTransfer.setData("text/plain", ev.target.id);
-      console.log(ev.target)
      }
 
    allowDrop(ev) {
@@ -78,12 +89,19 @@ class Entrance extends Component {
          
         this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
        }
-
-
-
+  renderDoorSound(){
+    return (
+      <Sound
+         url="http://k003.kiwi6.com/hotlink/cj99bk8oqj/Door.mp3"
+         playStatus={Sound.status.PLAYING}
+         playFromPosition={300 /* in milliseconds */}
+         onLoading={this.handleSongLoading}
+         onPlaying={this.handleSongPlaying}
+         onFinishedPlaying={this.handleSongFinishedPlaying} />
+    )
+  }
 
   render() {
-
 
     let backgroundStyle = {
       backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473430931/entrance_jhdm3t.jpg")',
@@ -104,8 +122,6 @@ class Entrance extends Component {
       // backgroundColor: 'red'
     }
 
-
-
     return(
       <div style={backgroundStyle}>
       <div
@@ -125,10 +141,20 @@ class Entrance extends Component {
                    <StageItem id="keycard"
                         style={style.images}
                         src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}/>
+
+           
+               <Sound
+                  url="http://k003.kiwi6.com/hotlink/86eca2bxv9/ahem_x.mp3"
+                  playStatus={Sound.status.PLAYING}
+                  playFromPosition={300 /* in milliseconds */}
+                  onLoading={this.handleSongLoading}
+                  onPlaying={this.handleSongPlaying}
+                  onFinishedPlaying={this.handleSongFinishedPlaying} />
+
           </div>)
 
           : null}
-
+          {this.props.doorClicked ? this.renderDoorSound(): null}
         <DialogBox/>
       </div>
     )
@@ -138,9 +164,10 @@ class Entrance extends Component {
 const mapStateToProps = (state) => {
   return {
     isMondyThere: state.people.mondy,
-    inventory: state.inventory
+    inventory: state.inventory,
+    doorClicked: state.openDoor
   }
 }
 
 
-export default connect(mapStateToProps, { mondy, messageDialogBox, emptyDialogBox  })(Entrance)
+export default connect(mapStateToProps, { mondy, mondyRemove, messageDialogBox, emptyDialogBox, openDoor  })(Entrance)

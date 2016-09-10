@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import Sound from 'react-sound'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -22,6 +23,13 @@ class Bar extends Component {
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
         <DialogBox/>
+        <Sound
+           url="http://k003.kiwi6.com/hotlink/1ctfwaq00r/Kitchen.mp3"
+           playStatus={Sound.status.PLAYING}
+           playFromPosition={300 /* in milliseconds */}
+           onLoading={this.handleSongLoading}
+           onPlaying={this.handleSongPlaying}
+           onFinishedPlaying={this.handleSongFinishedPlaying} />
       </div>
     )
   }
@@ -30,6 +38,7 @@ class Bar extends Component {
   goDownToEntrance(){ this.props.changeStage(0) }
   goIntoHallway(){ this.props.changeStage(5) }
   goIntoKitchen(){ this.props.changeStage(4) }
+  goToArcade(){this.props.changeStage(9)}
 
   // Dialog actions
   dialogLift(){this.messageSelector("lift")}
@@ -61,6 +70,7 @@ class Bar extends Component {
           style={playGame}
           onMouseEnter={this.dialogGame.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
+          onClick={this.goToArcade.bind(this) }
           ></div>
 
         <div
