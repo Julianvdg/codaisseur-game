@@ -53,7 +53,7 @@ class Reception extends Component {
   }
 
   // Navigation
-  goUpTheStairs(){this.props.changeStage(10)}
+  goUpTheStairs(){this.props.changeStage(2)}
   goOutside(){this.props.changeStage(0)}
 
   // Dialog actions

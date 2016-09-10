@@ -21,7 +21,7 @@ class Recruiter extends Component {
   }
 dialogDiploma(){this.messageSelector("diploma")}
 
-goBack(){this.props.changeStage(1)}
+goBack(){this.props.changeStage(9)}
 
   dragstart_handler(ev) {
       console.log("invent")
