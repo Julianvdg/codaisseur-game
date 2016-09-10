@@ -6,25 +6,35 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "behind macbook end of test" },
+    { kind: "assignment", content: "Assignment: Create a new Rails project called - World-of-Codaisseur. Click on the screen to start." },
+    { kind: "goToClass", content: "Go to class" },
 ]
 
 class Macbook extends Component {
+
+  componentDidMount() {
+    {this.messageSelector("assignment")}
+  }
+
+
   render() {
     return(
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
-        <input />
+        <textarea style={inputStyle} id='answer'/>
+        <button style={buttonStyle}
+        onClick={this.sendAnswer.bind(this) }
+        >Send answer</button>
         <DialogBox/>
       </div>
     )
   }
 
   // Navigation
-  goIntoBar(){this.props.changeStage(3)}
+  goToClass(){this.props.changeStage(7)}
 
   // Dialog actions
-  dialogTest(){this.messageSelector("test")}
+  dialogTest(){this.messageSelector("goToClass")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -33,16 +43,20 @@ class Macbook extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
+  sendAnswer(){
 
+    console.log(document.getElementById("answer").value)
+  }
 
 
   renderHitBoxes(){
     return(
       <div
-        style={enterBar}
-        onClick={this.goIntoBar.bind(this) }
+        style={goToClass}
+        onClick={this.goToClass.bind(this) }
         onMouseEnter={this.dialogTest.bind(this) }
         onMouseLeave={this.emptyDialogBox.bind(this) }>
+        Back to Class
       </div>
     )
   }
@@ -69,11 +83,34 @@ let backgroundStyle = {
 
 // Hitboxes
 
-let enterBar = {
-  height: '400px',
-  width: '180px',
+let goToClass = {
+  padding: '10px',
   position: 'absolute',
-  right: '160px',
-  bottom: '80px',
+  right: '20px',
+  top: '30px',
   cursor: 'pointer',
+  backgroundColor: '#000',
+  color: '#fff'
+}
+
+let inputStyle = {
+  backgroundColor: '#000',
+  border: 'none',
+  marginTop: '80px',
+  marginLeft: '250px',
+  color: '#fff',
+  resize: 'none',
+  height: '180px',
+  width: '300px',
+  padding: '30px'
+}
+
+let buttonStyle = {
+  width: '360px',
+  height: '50px',
+  position: 'absolute',
+  top: '360px',
+  right: '265px',
+  backgroundColor: '#000',
+  color: '#fff'
 }
