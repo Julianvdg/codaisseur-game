@@ -12,10 +12,28 @@ const messages = [
     { kind: "stairs", content: "Better head upstairs" },
 ]
 
+const style = {
+    images: {
+       position: 'absolute',
+       top: '44%',
+       left: '21%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '1',
+    },
+  }
+
 class Reception extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
+      <img id="lolly"
+           style={style.images}
+           src={'http://emojipedia-us.s3.amazonaws.com/cache/12/b1/12b1b8880776afc0a392fecec83058d0.png'}
+           draggable="true"
+           onDragStart={this.dragstart_handler.bind(this)}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>
@@ -40,6 +58,34 @@ class Reception extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
+  showImage(){
+    var id = document.getElementById("lolly")
+    id.style.visibility = "visible";
+  }
+
+  dragstart_handler(ev) {
+      console.log("invent")
+      // Add the target element's id to the data transfer object
+      ev.dataTransfer.setData("text/plain", ev.target.id);
+     }
+
+   allowDrop(ev) {
+         ev.preventDefault();
+     }
+
+
+
+   drop(ev) {
+         ev.preventDefault();
+         var data = ev.dataTransfer.getData("text");
+         if (ev.target.id == "inventory") {
+           this.props.addItem(data)
+           ev.target.appendChild(document.getElementById(data));
+           console.log(data)
+         }
+         ev.target.appendChild(document.getElementById(data));
+       }
+
 
 
   renderHitBoxes(){
@@ -56,7 +102,7 @@ class Reception extends Component {
           style={lollys}
           onMouseEnter={this.dialogLollys.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.dialogGrabLolly.bind(this)}
+          onClick={this.showImage}
           ></div>
 
         <div
