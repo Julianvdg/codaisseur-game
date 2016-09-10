@@ -86,8 +86,12 @@ class Entrance extends Component {
        }
 
     haveKey() {
-(??)         
-(??)        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
+<<<<<<< 451a847381b4dc3973b50f00b5ec48ca4ab20d0d
+        this.props.inventory.length == 0
+=======
+
+        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
+>>>>>>> Remove red background color from hitboxes
        }
 
   renderDoorSound(){
@@ -120,6 +124,7 @@ class Entrance extends Component {
       left: '250px',
       bottom: '1px',
       cursor: 'pointer',
+      //
     }
 
     return(

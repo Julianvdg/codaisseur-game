@@ -145,7 +145,7 @@ let useLift = {
   left: '350px',
   bottom: '170px',
   cursor: 'pointer',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 
@@ -156,7 +156,7 @@ let cacti = {
   left: '160px',
   bottom: '125px',
   cursor: 'pointer',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 
@@ -167,7 +167,7 @@ let playGame = {
   left: '700px',
   bottom: '140px',
   cursor: 'pointer',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 
@@ -178,7 +178,7 @@ let hallway = {
   left: '800px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 
@@ -189,7 +189,7 @@ let kitchen = {
   left: '0px',
   bottom: '20px',
   cursor: 'pointer',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 
@@ -199,7 +199,7 @@ let ceiling = {
   position: 'absolute',
   left: '90px',
   bottom: '400px',
-  backgroundColor: 'red',
+
   zIndex: '2'
 }
 

@@ -111,7 +111,7 @@ let enterBar = {
   right: '40px',
   bottom: '0px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+
 }
 
 let office = {
@@ -120,7 +120,7 @@ let office = {
   position: 'absolute',
   left: '390px',
   bottom: '300px',
-  backgroundColor: 'red'
+
 }
 
 let angela = {
@@ -129,7 +129,7 @@ let angela = {
   position: 'absolute',
   left: '100px',
   bottom: '150px',
-  backgroundColor: 'red'
+
 }
 
 let steffi = {
@@ -138,5 +138,5 @@ let steffi = {
   position: 'absolute',
   left: '250px',
   bottom: '150px',
-  backgroundColor: 'red'
+
 }
