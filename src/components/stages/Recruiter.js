@@ -8,6 +8,7 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 const messages = [
     { kind: "test", content: "testing" },
     { kind: "diploma", content: "Congratulations!! You got the job" },
+    { kind: "start", content: "Rembert: He there, are you ready for your next adventure? Let's see that diploma" },
 ]
 
 class Recruiter extends Component {
@@ -20,6 +21,7 @@ class Recruiter extends Component {
     )
   }
 dialogDiploma(){this.messageSelector("diploma")}
+dialogStart(){this.messageSelector("start")}
 
 goBack(){this.props.changeStage(2)}
 
@@ -49,7 +51,10 @@ goBack(){this.props.changeStage(2)}
        }
 
 
-
+ componentDidMount(){
+   this.emptyDialogBox()
+   this.dialogStart()
+ }
 
 
   // Standard dialog tools
