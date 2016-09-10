@@ -25,12 +25,12 @@ class Classroom extends Component {
     return(
       <div style={backgroundStyle}>
 
-      <div
-        style={enterBar}
-        onClick={this.goIntoBar.bind(this) }
-        onMouseEnter={this.dialogTest.bind(this) }
-        onMouseLeave={this.emptyDialogBox.bind(this) }>
-      </div>
+        <div
+          style={enterBar}
+          onClick={this.goIntoBar.bind(this) }
+          onMouseEnter={this.dialogTest.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
 
         <DialogBox/>
       </div>

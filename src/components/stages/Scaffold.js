@@ -8,7 +8,7 @@ const messages = [
     { kind: "test", content: "testing" },
 ]
 
-class Kitchen extends Component {
+class Scaffold extends Component {
 
   goIntoBar(){this.props.changeStage(3)}
 
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Kitchen)
+export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Scaffold)
 
 // Styles
 
