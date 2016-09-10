@@ -4,6 +4,8 @@ import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 import miriam from '../../actions/miriam-people'
+import InventoryItem from '../../components/InventoryItem'
+import StageItem from  '../../components/StageItem'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -12,6 +14,7 @@ const messages = [
     { kind: "quiz", content: "This is the first question" },
     { kind: "classroom", content: "The classroom.. What a journey!" },
     { kind: "hallway", content: "I could use some refreshments" },
+    { kind: "flower", content: "I love getting flowers! Ask me anything you want to know"}
 
 ]
 
@@ -36,6 +39,7 @@ class Office extends Component {
   dialogClassRoom(){this.messageSelector("classroom")}
   dialogMiriam(){this.messageSelector("miriam")}
   dialogQuiz(){this.messageSelector("quiz")}
+  dialogFlowerGift(){this.messageSelector("flower")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -53,16 +57,56 @@ class Office extends Component {
   }
 
 
+    dragstart_handler(ev) {
+        console.log("invent")
+        // Add the target element's id to the data transfer object
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+       }
+
+     allowDrop(ev) {
+           ev.preventDefault();
+          //  var data = ev.dataTransfer.getData("text/html");
+          //  const id = ev.target.getAttribute("draggable")
+          //  console.log(data)
+          //  if (ev.target.getAttribute("id") !== "keycard") ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
+          //  var data = ev.dataTransfer.getData("id,");
+          //  if(data == "key1") ev.dataTransfer.dropEffect = "none";
+          //  if(data !== "keycard") ev.dataTransfer.dropEffect = "none";
+       }
+
+
+
+     drop(ev) {
+           ev.preventDefault();
+           console.log(ev.target.id)
+           var data = ev.dataTransfer.getData("text",);
+          //  if (ev.target.id == "inventory") {
+          //    this.props.addItem(data)
+          //    ev.target.appendChild(document.getElementById(data));
+          //    console.log(data)
+          //  }
+          if(data == "flowers") {
+            // ev.dataTransfer.dropEffect = "none";
+            this.dialogFlowerGift()
+            console.log("true")
+            }
+         }
+
+
 
   renderMiriam() {
     return (
-        <img
-          style={miriamStyle}
-          src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}
-          onMouseEnter={this.dialogMiriam.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.miriamsQuiz.bind(this)}
-        />
+        <div id="miriam" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+          <div id="drop" >
+            <img
+              style={miriamStyle}
+              src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}
+              onMouseEnter={this.dialogMiriam.bind(this) }
+              onMouseLeave={this.emptyDialogBox.bind(this) }
+              onClick={this.miriamsQuiz.bind(this)}
+            />
+          </div>
+        </div>
     )
   }
 
