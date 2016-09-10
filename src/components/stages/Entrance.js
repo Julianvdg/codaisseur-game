@@ -9,6 +9,7 @@ import StageItem from '../StageItem'
 import InventoryItem from '../InventoryItem'
 import openDoor from '../../actions/opendoor'
 import Sound from 'react-sound'
+import removeItem from '../../actions/remove-item'
 
 const style = {
     mondy: {
@@ -60,33 +61,34 @@ class Entrance extends Component {
 
    allowDrop(ev) {
          ev.preventDefault();
-        //  var data = ev.dataTransfer.getData("text/html");
-        //  const id = ev.target.getAttribute("draggable")
-        //  console.log(data)
-        //  if (ev.target.getAttribute("id") !== "keycard") ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
-        //  var data = ev.dataTransfer.getData("id,");
-        //  if(data == "key1") ev.dataTransfer.dropEffect = "none";
-        //  if(data !== "keycard") ev.dataTransfer.dropEffect = "none";
      }
 
 
 
    drop(ev) {
          ev.preventDefault();
-         console.log(ev.target.id)
-         var data = ev.dataTransfer.getData("text",);
-        //  if (ev.target.id == "inventory") {
-        //    this.props.addItem(data)
-        //    ev.target.appendChild(document.getElementById(data));
-        //    console.log(data)
-        //  }
-        if(data == "keycard") {
-          // ev.dataTransfer.dropEffect = "none";
-          this.enterWeWork() }
+         console.log("hi")
+        //  var data = ev.dataTransfer.getData("text",);
+        // //  if (ev.target.id == "inventory") {
+        // //    this.props.addItem(data)
+        // //    ev.target.appendChild(document.getElementById(data));
+        // //    console.log(data)
+        // //  }
+        //
+        // if(data == "keycard") {
+        //   // ev.dataTransfer.dropEffect = "none";
+        //   this.enterWeWork()
+        //   this.props.removeItem(this.state.indexOf(data))
+        //   }
        }
 
+       getIds() {
+        return this.props.inventory.map((e) => {return e.id})
+
+       }
     haveKey() {
-        this.props.inventory.length == 0
+    const search = this.getIds()
+      return (search.indexOf("keycard") ==! -1)
        }
 
   renderDoorSound(){
@@ -170,4 +172,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { mondy, mondyRemove, messageDialogBox, emptyDialogBox, openDoor  })(Entrance)
+export default connect(mapStateToProps, { mondy, mondyRemove, messageDialogBox, removeItem, emptyDialogBox, openDoor  })(Entrance)

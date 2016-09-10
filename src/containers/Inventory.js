@@ -88,10 +88,12 @@ class Inventory extends Component {
          var id = document.getElementById(data)
          if (ev.target.id.startsWith("inventory")) {
            this.itemPlug(data)
+           console.log("hi")
           //  console.log(data)
           //     id.setAttribute('style', 'position:absolute;top:27%;left:27%;height:30px;marginTop:-15px;marginLeft:-15px')
           //     console.log(id.id)
          }
+           console.log("hi")
          return
      }
 

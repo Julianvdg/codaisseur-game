@@ -40,10 +40,10 @@ export default class InventoryItem extends Component {
 
      drop(ev) {
            ev.preventDefault();
+           console.log(bla)
            var data = ev.dataTransfer.getData("text");
            var id = document.getElementById(data)
           //  if (ev.target.id.startsWith("inventory") && this.props.inventory.indexOf(data) == -1 ) {
-
        }
   render() {
     return (
