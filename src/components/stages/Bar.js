@@ -16,6 +16,7 @@ const messages = [
     { kind: "ceiling", content: "Glass ceilings are so 2015... concrete ceilings are what is hip!" },
     { kind: "bas", content: "Ask Bas for advice" },
     { kind: "basadvice", content: "Give Compliments!" },
+    { kind: "stairs", content: "Let's head back to the stairs" },
 ]
 
 
@@ -41,6 +42,7 @@ class Bar extends Component {
   goIntoHallway(){ this.props.changeStage(5) }
   goIntoKitchen(){ this.props.changeStage(4) }
   goToArcade(){this.props.changeStage(9)}
+  goIntoStairs(){this.props.changeStage(2)}
 
   // Dialog actions
   dialogLift(){this.messageSelector("lift")}
@@ -51,6 +53,7 @@ class Bar extends Component {
   dialogKitchen(){ this.messageSelector("kitchen")}
   dialogCeiling(){ this.messageSelector("ceiling")}
   dialogBas(){ this.messageSelector("bas")}
+  dialogStairs(){ this.messageSelector("stairs")}
   basAdvice(){ this.messageSelector("basadvice")}
 
   // Standard dialog tools
@@ -103,6 +106,12 @@ class Bar extends Component {
           onMouseEnter={this.dialogCeiling.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
+          <div
+            style={stairs}
+            onMouseEnter={this.dialogStairs.bind(this) }
+            onMouseLeave={this.emptyDialogBox.bind(this) }
+            onClick={this.goIntoStairs.bind(this)}
+            ></div>
 
           <img
             style={basStyle}
@@ -146,6 +155,16 @@ let useLift = {
   bottom: '170px',
   cursor: 'pointer',
 
+  zIndex: '2'
+}
+
+let stairs = {
+  height: '195px',
+  width: '85px',
+  position: 'absolute',
+  left: '220px',
+  bottom: '170px',
+  cursor: 'pointer',
   zIndex: '2'
 }
 
