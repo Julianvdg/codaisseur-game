@@ -7,7 +7,7 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 // Messages to be sent to the dialogbox from this component
 const messages = [
     { kind: "test", content: "testing" },
-    { kind: "diploma", content: "Congratulations" },
+    { kind: "diploma", content: "Congratulations!! You got the job" },
 ]
 
 class Recruiter extends Component {
@@ -21,7 +21,7 @@ class Recruiter extends Component {
   }
 dialogDiploma(){this.messageSelector("diploma")}
 
-goBack(){this.props.changeStage(9)}
+goBack(){this.props.changeStage(2)}
 
   dragstart_handler(ev) {
       console.log("invent")
@@ -38,17 +38,14 @@ goBack(){this.props.changeStage(9)}
    drop(ev) {
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
-           console.log(data)
-         }
+
+
          if(data == "diploma") {
            // ev.dataTransfer.dropEffect = "none";
            this.dialogDiploma()
            console.log("beer")
            }
-         ev.target.appendChild(document.getElementById(data));
+
        }
 
 
