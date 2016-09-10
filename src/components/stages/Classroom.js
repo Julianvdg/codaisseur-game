@@ -121,7 +121,7 @@ let getBehindMacBook = {
   right: '200px',
   bottom: '80px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 
@@ -132,7 +132,7 @@ let jorge = {
   left: '100px',
   bottom: '170px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 let matthijs = {
@@ -142,7 +142,7 @@ let matthijs = {
   left: '280px',
   bottom: '340px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 let mark = {
@@ -152,7 +152,7 @@ let mark = {
   left: '680px',
   bottom: '140px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 
@@ -162,5 +162,5 @@ let office = {
   position: 'absolute',
   left: '50px',
   bottom: '480px',
-
+  backgroundColor: 'red'
 }

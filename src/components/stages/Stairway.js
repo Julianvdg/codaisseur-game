@@ -6,7 +6,7 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "bar", content: "The breakroom a.k.a bar. Is it friday today?" },
+    { kind: "bar", content: "The breakroom or a.k.a bar. Is it friday today?" },
     { kind: "downstairs", content: "Maybe I should go downstairs" },
 ]
 
@@ -84,7 +84,7 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
 
 let downStairs = {
@@ -94,5 +94,5 @@ let downStairs = {
   right: '400px',
   bottom: '20px',
   cursor: 'pointer',
-
+  backgroundColor: 'red'
 }
