@@ -15,6 +15,7 @@ import Office from '../components/stages/office'
 import Classroom from '../components/stages/classroom'
 import Macbook from '../components/stages/macbook'
 import Arcade from '../components/stages/arcade'
+import Recruiter from '../components/stages/recruiter'
 
 class Stage extends Component {
 
@@ -39,6 +40,7 @@ class Stage extends Component {
        <Classroom changeStage={ this.changeStage.bind(this) }/>,
        <Macbook changeStage={ this.changeStage.bind(this) }/>,
        <Arcade changeStage={ this.changeStage.bind(this) }/>,
+       <Recruiter changeStage={ this.changeStage.bind(this) }/>,
      ]
 
     return (
