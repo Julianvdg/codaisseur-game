@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import mondy from '../../actions/mondy-people'
+import mondyRemove from '../../actions/mondy-remove-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import openDoor from '../../actions/opendoor'
 import Sound from 'react-sound'
 
 const style = {
@@ -27,9 +29,19 @@ class Entrance extends Component {
   dialogFrontDoor(){ this.props.messageDialogBox("We work ... thank god it's monday, better hurry") }
 
   enterWeWork(){
-    const { changeStage, emptyDialogBox } = this.props
-    changeStage(1), emptyDialogBox()
+    this.props.mondyRemove()
+    const { changeStage, emptyDialogBox, openDoor } = this.props
+
+    setTimeout(() => {
+      emptyDialogBox()}, 2000)
+
+    openDoor()
+
+    setTimeout(() => {
+      changeStage(1)
+    }, 2000)
   }
+
 
   noKey(){
     const { mondy, messageDialogBox } = this.props
@@ -62,9 +74,19 @@ class Entrance extends Component {
          ev.target.appendChild(document.getElementById(data));
        }
 
+  renderDoorSound(){
+    return (
+      <Sound
+         url="http://k003.kiwi6.com/hotlink/cj99bk8oqj/Door.mp3"
+         playStatus={Sound.status.PLAYING}
+         playFromPosition={300 /* in milliseconds */}
+         onLoading={this.handleSongLoading}
+         onPlaying={this.handleSongPlaying}
+         onFinishedPlaying={this.handleSongFinishedPlaying} />
+    )
+  }
 
   render() {
-
 
     let backgroundStyle = {
       backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473430931/entrance_jhdm3t.jpg")',
@@ -93,6 +115,7 @@ class Entrance extends Component {
         onMouseEnter={this.dialogFrontDoor.bind(this) }>
       </div>
 
+
       {this.props.isMondyThere ?
 
           (<div>
@@ -106,16 +129,17 @@ class Entrance extends Component {
                    draggable="true"
                    onDragStart={this.dragstart_handler.bind(this)}/>
                <Sound
-                  url="http://www.wavsource.com/snds_2016-08-21_1204101428963685/sfx/ahem_x.wav"
+                  url="http://k003.kiwi6.com/hotlink/86eca2bxv9/ahem_x.mp3"
                   playStatus={Sound.status.PLAYING}
                   playFromPosition={300 /* in milliseconds */}
                   onLoading={this.handleSongLoading}
                   onPlaying={this.handleSongPlaying}
                   onFinishedPlaying={this.handleSongFinishedPlaying} />
+
           </div>)
 
           : null}
-
+          {this.props.doorClicked ? this.renderDoorSound(): null}
         <DialogBox/>
       </div>
     )
@@ -124,9 +148,10 @@ class Entrance extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isMondyThere: state.people.mondy
+    isMondyThere: state.people.mondy,
+    doorClicked: state.openDoor
   }
 }
 
 
-export default connect(mapStateToProps, { mondy, messageDialogBox, emptyDialogBox  })(Entrance)
+export default connect(mapStateToProps, { mondy, mondyRemove, messageDialogBox, emptyDialogBox, openDoor  })(Entrance)
