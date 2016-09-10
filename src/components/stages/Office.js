@@ -6,16 +6,17 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 import miriam from '../../actions/miriam-people'
 import InventoryItem from '../../components/InventoryItem'
 import StageItem from  '../../components/StageItem'
+import askQuestions from '../../actions/miriam-questions'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
     { kind: "test", content: "in office going to classroom" },
-    { kind: "miriam", content: "Miriam placeholder" },
-    { kind: "quiz", content: "This is the first question" },
+    { kind: "miriam", content: "Ask Miriam a question" },
+    { kind: "quiz", content: "Miriam: If you don't know something just look at the documentation.. " },
     { kind: "classroom", content: "The classroom.. What a journey!" },
     { kind: "hallway", content: "I could use some refreshments" },
-    { kind: "flower", content: "I love getting flowers! Ask me anything you want to know"}
-
+    { kind: "flower", content: "Miriam: I love getting flowers! If you're passionate about rails I'll answer your questions"},
+    { kind: "answer", content: "Miriam: A rails app with postgres? try: rails new app-name -d postgresql " },
 ]
 
 class Office extends Component {
@@ -40,6 +41,7 @@ class Office extends Component {
   dialogMiriam(){this.messageSelector("miriam")}
   dialogQuiz(){this.messageSelector("quiz")}
   dialogFlowerGift(){this.messageSelector("flower")}
+  dialogquestion(){this.messageSelector("answer")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -50,6 +52,10 @@ class Office extends Component {
 
   miriamsQuiz(){
     this.dialogQuiz()
+  }
+
+  askQuestions(){
+    this.props.askQuestions()
   }
 
   componentDidMount(){
@@ -88,7 +94,7 @@ class Office extends Component {
           if(data == "flowers") {
             // ev.dataTransfer.dropEffect = "none";
             this.dialogFlowerGift()
-            console.log("true")
+            this.askQuestions()
             }
          }
 
@@ -101,7 +107,7 @@ class Office extends Component {
             <img
               style={miriamStyle}
               src={'http://res.cloudinary.com/juvdg/image/upload/v1473501492/miriamt_s0zrf7.png'}
-              onMouseEnter={this.dialogMiriam.bind(this) }
+              onMouseEnter={this.props.askquestion ? this.dialogquestion.bind(this) : this.dialogMiriam.bind(this) }
               onMouseLeave={this.emptyDialogBox.bind(this) }
               onClick={this.miriamsQuiz.bind(this)}
             />
@@ -141,12 +147,13 @@ class Office extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isMiriamThere: state.people.miriam
+    isMiriamThere: state.people.miriam,
+    askquestion: state.people.askQuestions
   }
 }
 
 
-export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox, miriam })(Office)
+export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox, miriam, askQuestions })(Office)
 
 
 
