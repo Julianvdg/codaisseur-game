@@ -7,10 +7,13 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 // Messages to be sent to the dialogbox from this component
 const messages = [
     { kind: "macbook", content: "Oh my zsh! Everyone has already started the assignment! Maybe I should too?" },
-    { kind: "jorge", content: "Something refreshing would be nice" },
-    { kind: "matthijs", content: "You don't need to get me anything" },
-    { kind: "mark", content: "I could use a cup of coffee" },
+    { kind: "jorge", content: "Get advice from Jorge" },
+    { kind: "matthijs", content: "Get advice from Matthijs" },
+    { kind: "mark", content: "Get advice from Mark" },
     { kind: "office", content: "I think I might have some questions" },
+    { kind: "markadvice", content: "Don't panic during this rollercoaster ride" },
+    { kind: "jorgeadvice", content: "Je pieken en dalen; probeer er niet in te verdwalen" },
+    { kind: "matthijsadvice", content: "Go with the flow" },
 ]
 
 
@@ -34,6 +37,10 @@ class Classroom extends Component {
   dialogMatthijs(){this.messageSelector("matthijs")}
   dialogMark(){this.messageSelector("mark")}
   dialogOffice(){this.messageSelector("office")}
+  jorgeAdvice(){this.messageSelector("jorgeadvice")}
+  markAdvice(){this.messageSelector("markadvice")}
+  matthijsAdvice(){this.messageSelector("matthijsadvice")}
+
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -58,21 +65,21 @@ class Classroom extends Component {
           style={jorge}
           onMouseEnter={this.dialogJorge.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.goDownToEntrance.bind(this) }
+          onClick={this.jorgeAdvice.bind(this) }
           ></div>
 
         <div
           style={matthijs}
           onMouseEnter={this.dialogMatthijs.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.goDownToEntrance.bind(this) }
+          onClick={this.matthijsAdvice.bind(this) }
           ></div>
 
         <div
           style={mark}
           onMouseEnter={this.dialogMark.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.dialogGrabCacti.bind(this)}
+          onClick={this.markAdvice.bind(this)}
           ></div>
 
 
