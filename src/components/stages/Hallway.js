@@ -17,6 +17,7 @@ class Hallway extends Component {
     return(
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
+
         <DialogBox/>
       </div>
     )

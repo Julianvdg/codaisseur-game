@@ -5,6 +5,8 @@ import mondy from '../../actions/mondy-people'
 import mondyRemove from '../../actions/mondy-remove-people'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import StageItem from '../StageItem'
+import InventoryItem from '../InventoryItem'
 import openDoor from '../../actions/opendoor'
 import Sound from 'react-sound'
 
@@ -42,7 +44,6 @@ class Entrance extends Component {
     }, 2000)
   }
 
-
   noKey(){
     const { mondy, messageDialogBox } = this.props
     messageDialogBox("I swear I had my keycard just now.. ")
@@ -59,21 +60,35 @@ class Entrance extends Component {
 
    allowDrop(ev) {
          ev.preventDefault();
+        //  var data = ev.dataTransfer.getData("text/html");
+        //  const id = ev.target.getAttribute("draggable")
+        //  console.log(data)
+        //  if (ev.target.getAttribute("id") !== "keycard") ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
+        //  var data = ev.dataTransfer.getData("id,");
+        //  if(data == "key1") ev.dataTransfer.dropEffect = "none";
+        //  if(data !== "keycard") ev.dataTransfer.dropEffect = "none";
      }
 
 
 
    drop(ev) {
          ev.preventDefault();
-         var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
-           console.log(data)
-         }
-         ev.target.appendChild(document.getElementById(data));
+         console.log(ev.target.id)
+         var data = ev.dataTransfer.getData("text",);
+        //  if (ev.target.id == "inventory") {
+        //    this.props.addItem(data)
+        //    ev.target.appendChild(document.getElementById(data));
+        //    console.log(data)
+        //  }
+        if(data == "keycard") {
+          // ev.dataTransfer.dropEffect = "none";
+          this.enterWeWork() }
        }
 
+    haveKey() {
+         
+        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
+       }
   renderDoorSound(){
     return (
       <Sound
@@ -112,22 +127,22 @@ class Entrance extends Component {
       <div
         style={frontDoor}
         onClick={this.props.isMondyThere ? this.enterWeWork.bind(this) : this.noKey.bind(this)}
-        onMouseEnter={this.dialogFrontDoor.bind(this) }>
+        onMouseEnter={this.dialogFrontDoor.bind(this) }
+        onDrop={this.drop.bind(this)}
+        onDragOver={this.allowDrop.bind(this)}>
       </div>
 
-
-      {this.props.isMondyThere ?
+      {this.props.isMondyThere && !this.haveKey() ?
 
           (<div>
               <img onClick={this.enterWeWork.bind(this)}
                    style={style.mondy}
                    src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
+                   <StageItem id="keycard"
+                        style={style.images}
+                        src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}/>
 
-              <img id="keycard"
-                   style={style.images}
-                   src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}
-                   draggable="true"
-                   onDragStart={this.dragstart_handler.bind(this)}/>
+           
                <Sound
                   url="http://k003.kiwi6.com/hotlink/86eca2bxv9/ahem_x.mp3"
                   playStatus={Sound.status.PLAYING}
@@ -149,6 +164,7 @@ class Entrance extends Component {
 const mapStateToProps = (state) => {
   return {
     isMondyThere: state.people.mondy,
+    inventory: state.inventory,
     doorClicked: state.openDoor
   }
 }
