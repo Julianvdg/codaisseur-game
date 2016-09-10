@@ -83,18 +83,29 @@ class Inventory extends Component {
      }
 
    drop(ev) {
+     const inventory = this.getIds()
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
          var id = document.getElementById(data)
-         if (ev.target.id.startsWith("inventory")) {
+         if (ev.target.id.startsWith("inventory") && !this.haveItem(data) && inventory.length < 9) {
            this.itemPlug(data)
-           console.log("hi")
+             document.getElementById(data).outerHTML='';
+
           //  console.log(data)
           //     id.setAttribute('style', 'position:absolute;top:27%;left:27%;height:30px;marginTop:-15px;marginLeft:-15px')
           //     console.log(id.id)
          }
-           console.log("hi")
-         return
+
+
+     }
+
+     getIds() {
+      return this.props.inventory.map((e) => {return e.id})
+
+     }
+  haveItem(data) {
+  const search = this.getIds()
+    return (search.indexOf(data) !== -1)
      }
 
 
