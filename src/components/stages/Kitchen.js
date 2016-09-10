@@ -122,12 +122,7 @@ class Kitchen extends Component {
    drop(ev) {
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
-         if (ev.target.id == "inventory") {
-           this.props.addItem(data)
-           ev.target.appendChild(document.getElementById(data));
-           console.log(data)
-         }
-         ev.target.appendChild(document.getElementById(data));
+        
        }
 
 
