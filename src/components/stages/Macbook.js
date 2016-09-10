@@ -6,24 +6,39 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "behind macbook end of test" },
+    { kind: "assignment", content: 'Assignment: Create a new Rails project called "world-of-codaisseur" with a postgress database. Click on the screen to start.' },
+    { kind: "goToClass", content: "Go to class" },
+    { kind: "goedAntwoord", content: "Goed gedaan!" },
+    { kind: "foutAntwoord", content: "Fout! Probeer opnieuw!" },
 ]
 
 class Macbook extends Component {
+
+
+  componentDidMount() {
+    {this.messageSelector("assignment")}
+  }
+
+
   render() {
     return(
       <div style={backgroundStyle}>
         {this.renderHitBoxes()}
+        <textarea style={inputStyle} id='answer'/>
+        <button style={buttonStyle}
+        onClick={this.sendAnswer.bind(this) }
+        >Send answer</button>
+        <img id="wouter" style={wouterStyle}/>
         <DialogBox/>
       </div>
     )
   }
-  
+
   // Navigation
-  goIntoBar(){this.props.changeStage(3)}
+  goToClass(){this.props.changeStage(7)}
 
   // Dialog actions
-  dialogTest(){this.messageSelector("test")}
+  dialogTest(){this.messageSelector("goToClass")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -32,16 +47,28 @@ class Macbook extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-
+  sendAnswer(){
+    let answer = document.getElementById("answer").value
+    let lowercaseAnswer = answer.toLowerCase()
+    if (lowercaseAnswer === "rails new world-of-codaisseur -d postgresql") {
+      console.log("goed antwoord!")
+      {this.messageSelector("goedAntwoord")}
+      document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473514172/woutergoed_vbtqvk.png";
+    } else {
+      {this.messageSelector("foutAntwoord")}
+      document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473513895/wouterfout_dplpxr.png";
+      }
+  }
 
 
   renderHitBoxes(){
     return(
       <div
-        style={enterBar}
-        onClick={this.goIntoBar.bind(this) }
+        style={goToClass}
+        onClick={this.goToClass.bind(this) }
         onMouseEnter={this.dialogTest.bind(this) }
         onMouseLeave={this.emptyDialogBox.bind(this) }>
+        Back to Class
       </div>
     )
   }
@@ -57,7 +84,7 @@ export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Ma
 // Styles
 
 let backgroundStyle = {
-  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473429941/trappenhuis_fif5tk.jpg")',
+  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473502430/macbook_vlq7h0.png")',
   width: '880px',
   height: '580px',
   margin: '0 auto',
@@ -68,11 +95,42 @@ let backgroundStyle = {
 
 // Hitboxes
 
-let enterBar = {
-  height: '400px',
-  width: '180px',
+let goToClass = {
+  padding: '10px',
   position: 'absolute',
-  right: '160px',
-  bottom: '80px',
+  right: '20px',
+  top: '30px',
   cursor: 'pointer',
+  backgroundColor: '#000',
+  color: '#fff'
+}
+
+let inputStyle = {
+  backgroundColor: '#000',
+  border: 'none',
+  marginTop: '80px',
+  marginLeft: '250px',
+  color: '#fff',
+  resize: 'none',
+  height: '180px',
+  width: '300px',
+  padding: '30px'
+}
+
+let buttonStyle = {
+  width: '360px',
+  height: '50px',
+  position: 'absolute',
+  top: '360px',
+  right: '265px',
+  backgroundColor: '#000',
+  color: '#fff'
+}
+
+let wouterStyle = {
+  position: 'absolute',
+  right: '-20px',
+  top: '210px',
+  width: '500px',
+  zIndex: '2',
 }
