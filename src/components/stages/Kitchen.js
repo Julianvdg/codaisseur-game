@@ -16,6 +16,7 @@ const messages = [
     { kind: "nienke", content: "Get advice from Nienke" },
     { kind: "bramadvice", content: "Try not to drink every evening after programming" },
     { kind: "nienkeadvice", content: "Don't compare yourself to the others" },
+    { kind: "beer!", content: "Ok..I guess I can have 1 more" },
 ]
 
 const style = {
@@ -84,6 +85,7 @@ class Kitchen extends Component {
   dialogBram(){this.messageSelector("bram")}
   nienkeAdvice(){this.messageSelector("nienkeadvice")}
   bramAdvice(){this.messageSelector("bramadvice")}
+  dialogBeer(){this.messageSelector("beer!")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -127,6 +129,11 @@ class Kitchen extends Component {
            ev.target.appendChild(document.getElementById(data));
            console.log(data)
          }
+         if(data == "beer") {
+           // ev.dataTransfer.dropEffect = "none";
+           this.dialogBeer()
+           console.log("beer")
+           }
          ev.target.appendChild(document.getElementById(data));
        }
 
@@ -178,12 +185,16 @@ class Kitchen extends Component {
           onClick={this.nienkeAdvice.bind(this)}
           ></div>
 
-        <div
-          style={bram}
-          onMouseEnter={this.dialogBram.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.bramAdvice.bind(this)}
-          ></div>
+          <div id="bram" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+            <div id="drop2" >
+            <div
+              style={bram}
+              onMouseEnter={this.dialogBram.bind(this) }
+              onMouseLeave={this.emptyDialogBox.bind(this) }
+              onClick={this.bramAdvice.bind(this)}
+              ></div>
+            </div>
+          </div>
       </div>
     )
   }
