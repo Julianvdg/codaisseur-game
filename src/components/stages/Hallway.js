@@ -5,7 +5,7 @@ import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 
 const messages = [
-    { kind: "test", content: "testing" },
+    { kind: "test", content: "in hallway going to office" },
 ]
 
 class Hallway extends Component {
