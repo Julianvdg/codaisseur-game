@@ -100,7 +100,7 @@ class Office extends Component {
           <div id="drop" >
             <img
               style={miriamStyle}
-              src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}
+              src={'http://res.cloudinary.com/juvdg/image/upload/v1473501492/miriamt_s0zrf7.png'}
               onMouseEnter={this.dialogMiriam.bind(this) }
               onMouseLeave={this.emptyDialogBox.bind(this) }
               onClick={this.miriamsQuiz.bind(this)}
