@@ -10,8 +10,9 @@ const messages = [
     { kind: "stairs", content: "Down the stairs we go" },
     { kind: "coffee", content: "But first Coffee!" },
     { kind: "beer", content: "Friday!? Let's get some beer!" },
-    { kind: "fruitwater", content: "It's fresh, fresh; exciting" },
     { kind: "water", content: "Water (H2O) is a polar inorganic compound that is at room temperature a tasteless and odorless liquid" },
+    { kind: "bram", content: "You know, I feel like some candy.." },
+    { kind: "nienke", content: "I wish I could go outside on a day like this" },
 ]
 
 class Kitchen extends Component {
@@ -33,8 +34,9 @@ class Kitchen extends Component {
   dialogStairs(){this.messageSelector("stairs")}
   dialogCoffee(){this.messageSelector("coffee")}
   dialogWater(){this.messageSelector("water")}
-  dialogFruitWater(){this.messageSelector("fruitwater")}
   dialogBeer(){this.messageSelector("beer")}
+  dialogNienke(){this.messageSelector("nienke")}
+  dialogBram(){this.messageSelector("bram")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -85,8 +87,15 @@ class Kitchen extends Component {
           ></div>
 
         <div
-          style={fruitWater}
-          onMouseEnter={this.dialogFruitWater.bind(this) }
+          style={nienke}
+          onMouseEnter={this.dialogNienke.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.getFruitWater.bind(this)}
+          ></div>
+
+        <div
+          style={bram}
+          onMouseEnter={this.dialogBram.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           // onClick={this.getFruitWater.bind(this)}
           ></div>
@@ -106,7 +115,7 @@ export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Ki
 // Styles
 
 let backgroundStyle = {
-  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473429941/trappenhuis_fif5tk.jpg")',
+  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473495299/kitchen_mbylrv.jpg")',
   width: '880px',
   height: '580px',
   margin: '0 auto',
@@ -118,61 +127,70 @@ let backgroundStyle = {
 // Hitboxes
 
 let enterBar = {
-  height: '400px',
-  width: '180px',
+  height: '150px',
+  width: '780px',
   position: 'absolute',
-  right: '160px',
-  bottom: '80px',
+  right: '100px',
+  bottom: '5px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
 
 let downStairs = {
-  height: '195px',
-  width: '85px',
+  height: '570px',
+  width: '50px',
   position: 'absolute',
-  left: '350px',
-  bottom: '170px',
+  left: '830px',
+  bottom: '10px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
 let water = {
-  height: '150px',
-  width: '100px',
+  height: '170px',
+  width: '120px',
   position: 'absolute',
-  left: '700px',
-  bottom: '140px',
+  left: '420px',
+  bottom: '200px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
 let coffee = {
-  height: '540px',
-  width: '80px',
+  height: '230px',
+  width: '170px',
   position: 'absolute',
-  left: '800px',
-  bottom: '20px',
+  left: '5px',
+  bottom: '170px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
 let letsGetSomeBeers = {
-  height: '540px',
-  width: '80px',
+  height: '190px',
+  width: '100px',
   position: 'absolute',
-  left: '0px',
-  bottom: '20px',
+  left: '700px',
+  bottom: '170px',
   cursor: 'pointer',
   backgroundColor: 'red'
 }
 
-let fruitWater = {
-  height: '140px',
-  width: '220px',
+let nienke = {
+  height: '340px',
+  width: '170px',
   position: 'absolute',
-  left: '330px',
-  bottom: '400px',
+  left: '230px',
+  bottom: '170px',
+  backgroundColor: 'red'
+}
+
+let bram = {
+  height: '130px',
+  width: '120px',
+  position: 'absolute',
+  left: '710px',
+  bottom: '370px',
   backgroundColor: 'red'
 }
