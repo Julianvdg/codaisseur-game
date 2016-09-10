@@ -14,6 +14,8 @@ const messages = [
     { kind: "hallway", content: "Better head towards the classroom" },
     { kind: "kitchen", content: "Phew, I could use a drink!" },
     { kind: "ceiling", content: "Glass ceilings are so 2015... concrete ceilings are what is hip!" },
+    { kind: "bas", content: "Phew, I could use a drink!" },
+    { kind: "basadvice", content: "Phew, I could use a drink!" },
 ]
 
 
@@ -48,6 +50,8 @@ class Bar extends Component {
   dialogHallway(){ this.messageSelector("hallway")}
   dialogKitchen(){ this.messageSelector("kitchen")}
   dialogCeiling(){ this.messageSelector("ceiling")}
+  dialogBas(){ this.messageSelector("bas")}
+  basAdvice(){ this.messageSelector("basadvice")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -99,6 +103,14 @@ class Bar extends Component {
           onMouseEnter={this.dialogCeiling.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
+
+          <img
+            style={basStyle}
+            src={'http://res.cloudinary.com/juvdg/image/upload/v1473506085/bas_u7ofvo.png'}
+            onMouseEnter={this.dialogBas.bind(this) }
+            onMouseLeave={this.emptyDialogBox.bind(this) }
+            onClick={this.basAdvice.bind(this)}
+          />
       </div>
     )
   }
@@ -183,4 +195,10 @@ let ceiling = {
   left: '90px',
   bottom: '400px',
   backgroundColor: 'red'
+}
+
+let basStyle = {
+  position: 'absolute',
+  left: '360px',
+  bottom: '-40px',
 }
