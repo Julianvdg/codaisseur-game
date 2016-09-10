@@ -14,6 +14,15 @@ const messages = [
 ]
 
 class Office extends Component {
+  render() {
+    return(
+      <div style={backgroundStyle}>
+        { this.renderHitBoxes()}
+        { this.props.isMiriamThere ? this.renderMiriam() : null }
+        <DialogBox/>
+      </div>
+    )
+  }
 
   // Navigation
   goIntoHallway(){this.props.changeStage(5)}
@@ -39,6 +48,8 @@ class Office extends Component {
     this.props.miriam()
   }
 
+
+
   renderMiriam() {
     return (
         <img
@@ -51,22 +62,13 @@ class Office extends Component {
     )
   }
 
-  render() {
-
+  renderHitBoxes() {
     return(
-      <div style={backgroundStyle}>
-
-        <div
-          style={enterBar}
-          onClick={this.goIntoClassroom.bind(this) }
-          onMouseEnter={this.dialogTest.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }>
-        </div>
-
-        {this.props.isMiriamThere ? this.renderMiriam() : null }
-
-
-        <DialogBox/>
+      <div
+        style={enterBar}
+        onClick={this.goIntoClassroom.bind(this) }
+        onMouseEnter={this.dialogTest.bind(this) }
+        onMouseLeave={this.emptyDialogBox.bind(this) }>
       </div>
     )
   }

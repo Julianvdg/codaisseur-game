@@ -9,7 +9,16 @@ const messages = [
     { kind: "test", content: "in classroom going to macbook" },
 ]
 
+
 class Classroom extends Component {
+  render() {
+    return(
+      <div style={backgroundStyle}>
+        {this.renderHitBoxes()}
+        <DialogBox/>
+      </div>
+    )
+  }
 
   // Navigation
   goIntoOffice(){this.props.changeStage(6)}
@@ -25,19 +34,15 @@ class Classroom extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-  render() {
 
+
+  renderHitBoxes(){
     return(
-      <div style={backgroundStyle}>
-
-        <div
-          style={enterBar}
-          onClick={this.getBehindMacbook.bind(this) }
-          onMouseEnter={this.dialogTest.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }>
-        </div>
-
-        <DialogBox/>
+      <div
+        style={enterBar}
+        onClick={this.getBehindMacbook.bind(this) }
+        onMouseEnter={this.dialogTest.bind(this) }
+        onMouseLeave={this.emptyDialogBox.bind(this) }>
       </div>
     )
   }
@@ -46,7 +51,6 @@ class Classroom extends Component {
 const mapStateToProps = (state) => {
   return {}
 }
-
 
 export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Classroom)
 

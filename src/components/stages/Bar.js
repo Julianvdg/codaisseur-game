@@ -15,7 +15,16 @@ const messages = [
     { kind: "ceiling", content: "Glass ceilings are so 2015... concrete ceilings are what is hip!" },
 ]
 
+
 class Bar extends Component {
+  render() {
+    return(
+      <div style={backgroundStyle}>
+        {this.renderHitBoxes()}
+        <DialogBox/>
+      </div>
+    )
+  }
 
   // Navigation
   goDownToEntrance(){ this.props.changeStage(0) }
@@ -38,10 +47,9 @@ class Bar extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-  render() {
-
+  renderHitBoxes(){
     return(
-      <div style={backgroundStyle}>
+      <div>
         <div
           style={useLift}
           onMouseEnter={this.dialogLift.bind(this) }
@@ -81,8 +89,6 @@ class Bar extends Component {
           onMouseEnter={this.dialogCeiling.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
-
-        <DialogBox/>
       </div>
     )
   }
@@ -93,6 +99,7 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Bar)
+
 
 // Styles
 

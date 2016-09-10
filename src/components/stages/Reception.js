@@ -10,6 +10,14 @@ const messages = [
 ]
 
 class Reception extends Component {
+  render() {
+    return(
+      <div style={backgroundStyle}>
+        {this.renderHitBoxes()}
+        <DialogBox/>
+      </div>
+    )
+  }
 
   // Navigation
   goToStairway(){this.props.changeStage(2)}
@@ -24,18 +32,15 @@ class Reception extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-  render() {
+
+
+  renderHitBoxes(){
     return(
-      <div style={backgroundStyle}>
-
-        <img  src={'http://res.cloudinary.com/juvdg/image/upload/v1473444538/arrow_zhtwoy.png'}
-              style={arrowRight} onClick={this.goToStairway.bind(this) }
-              onMouseEnter={this.dialogTest.bind(this) }
-              onMouseLeave={this.emptyDialogBox.bind(this) }
-              />
-
-        <DialogBox/>
-      </div>
+      <img  src={'http://res.cloudinary.com/juvdg/image/upload/v1473444538/arrow_zhtwoy.png'}
+            style={arrowRight} onClick={this.goToStairway.bind(this) }
+            onMouseEnter={this.dialogTest.bind(this) }
+            onMouseLeave={this.emptyDialogBox.bind(this) }
+            />
     )
   }
 }

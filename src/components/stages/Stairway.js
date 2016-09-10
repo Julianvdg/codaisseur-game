@@ -9,7 +9,16 @@ const messages = [
     { kind: "test", content: "in stairway going to bar" },
 ]
 
+
 class Stairway extends Component {
+  render() {
+    return(
+      <div style={backgroundStyle}>
+        {this.renderHitBoxes()}
+        <DialogBox/>
+      </div>
+    )
+  }
 
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
@@ -24,17 +33,14 @@ class Stairway extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-  render() {
 
+  renderHitBoxes(){
     return(
-      <div style={backgroundStyle}>
-        <div
-          style={enterBar}
-          onClick={this.goIntoBar.bind(this) }
-          onMouseEnter={this.dialogTest.bind(this) }
-          onMouseLeave={this.emptyDialogBox.bind(this) }>
-        </div>
-        <DialogBox/>
+      <div
+        style={enterBar}
+        onClick={this.goIntoBar.bind(this) }
+        onMouseEnter={this.dialogTest.bind(this) }
+        onMouseLeave={this.emptyDialogBox.bind(this) }>
       </div>
     )
   }
@@ -43,7 +49,6 @@ class Stairway extends Component {
 const mapStateToProps = (state) => {
   return {}
 }
-
 
 export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Stairway)
 
