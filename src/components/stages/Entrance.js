@@ -86,7 +86,8 @@ class Entrance extends Component {
        }
 
     haveKey() {
-        this.props.inventory.length == 0
+(??)         
+(??)        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
        }
 
   renderDoorSound(){
@@ -119,7 +120,6 @@ class Entrance extends Component {
       left: '250px',
       bottom: '1px',
       cursor: 'pointer',
-      // backgroundColor: 'red'
     }
 
     return(
