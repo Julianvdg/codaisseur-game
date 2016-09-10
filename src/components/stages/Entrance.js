@@ -86,9 +86,9 @@ class Entrance extends Component {
        }
 
     haveKey() {
-         
-        this.props.inventory.filter((e) => { return e.id == "keycard"}).length > 0
+        this.props.inventory.length == 0
        }
+
   renderDoorSound(){
     return (
       <Sound
@@ -142,7 +142,7 @@ class Entrance extends Component {
                         style={style.images}
                         src={'http://res.cloudinary.com/juvdg/image/upload/v1473432641/weworkpasje_gsrkzn.png'}/>
 
-           
+
                <Sound
                   url="http://k003.kiwi6.com/hotlink/86eca2bxv9/ahem_x.mp3"
                   playStatus={Sound.status.PLAYING}
