@@ -15,10 +15,58 @@ const messages = [
     { kind: "nienke", content: "I wish I could go outside on a day like this" },
 ]
 
+const style = {
+    coffeeimg: {
+       position: 'absolute',
+       top: '60%',
+       left: '4%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '1',
+    },
+    waterimg: {
+       position: 'absolute',
+       top: '50%',
+       left: '52%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '1',
+    },
+    beerimg: {
+       position: 'absolute',
+       top: '78%',
+       left: '87%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '1',
+    },
+  }
+
 class Kitchen extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
+      <img id="coffee"
+           style={style.coffeeimg}
+           src={'http://emojipedia-us.s3.amazonaws.com/cache/64/11/64118e55c629ae7eea058d3320796d1d.png'}
+           draggable="true"
+           onDragStart={this.dragstart_handler.bind(this)}/>
+       <img id="water"
+            style={style.waterimg}
+            src={'http://www.glenrosebluegrass.com/images/CivicAlerts/5/_glass-of-water.png'}
+            draggable="true"
+            onDragStart={this.dragstart_handler.bind(this)}/>
+        <img id="beer"
+             style={style.beerimg}
+             src={'https://www.emojibase.com/resources/img/emojis/apple/x1f37a.png.pagespeed.ic.BvtGLK8p4U.png'}
+             draggable="true"
+             onDragStart={this.dragstart_handler.bind(this)}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>
@@ -45,6 +93,44 @@ class Kitchen extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
+  getCoffee(){
+    var id = document.getElementById("coffee")
+    id.style.visibility = "visible";
+  }
+
+  getWater(){
+    var id = document.getElementById("water")
+    id.style.visibility = "visible";
+  }
+
+  getSomeBeers(){
+    var id = document.getElementById("beer")
+    id.style.visibility = "visible";
+  }
+
+  dragstart_handler(ev) {
+      console.log("invent")
+      // Add the target element's id to the data transfer object
+      ev.dataTransfer.setData("text/plain", ev.target.id);
+     }
+
+   allowDrop(ev) {
+         ev.preventDefault();
+     }
+
+
+
+   drop(ev) {
+         ev.preventDefault();
+         var data = ev.dataTransfer.getData("text");
+         if (ev.target.id == "inventory") {
+           this.props.addItem(data)
+           ev.target.appendChild(document.getElementById(data));
+           console.log(data)
+         }
+         ev.target.appendChild(document.getElementById(data));
+       }
+
 
 
 
@@ -69,21 +155,21 @@ class Kitchen extends Component {
           style={water}
           onMouseEnter={this.dialogWater.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getWater.bind(this)}
+          onClick={this.getWater}
           ></div>
 
         <div
           style={coffee}
           onMouseEnter={this.dialogCoffee.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getCoffee.bind(this)}
+          onClick={this.getCoffee}
           ></div>
 
         <div
           style={letsGetSomeBeers}
           onMouseEnter={this.dialogBeer.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.getSomeBeers.bind(this)}
+          onClick={this.getSomeBeers}
           ></div>
 
         <div
@@ -133,7 +219,7 @@ let enterBar = {
   right: '100px',
   bottom: '5px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 
@@ -154,7 +240,7 @@ let water = {
   left: '420px',
   bottom: '200px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 let coffee = {
@@ -164,7 +250,7 @@ let coffee = {
   left: '5px',
   bottom: '170px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 let letsGetSomeBeers = {
@@ -174,7 +260,7 @@ let letsGetSomeBeers = {
   left: '700px',
   bottom: '170px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 let nienke = {
