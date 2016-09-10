@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import StageItem from '../StageItem'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -54,21 +55,15 @@ class Kitchen extends Component {
   render() {
     return(
       <div style={backgroundStyle}>
-      <img id="coffee"
-           style={style.coffeeimg}
-           src={'http://emojipedia-us.s3.amazonaws.com/cache/64/11/64118e55c629ae7eea058d3320796d1d.png'}
-           draggable="true"
-           onDragStart={this.dragstart_handler.bind(this)}/>
-       <img id="water"
-            style={style.waterimg}
-            src={'http://www.glenrosebluegrass.com/images/CivicAlerts/5/_glass-of-water.png'}
-            draggable="true"
-            onDragStart={this.dragstart_handler.bind(this)}/>
-        <img id="beer"
+        <StageItem id="coffee"
+             style={style.coffeeimg}
+             src={'http://emojipedia-us.s3.amazonaws.com/cache/64/11/64118e55c629ae7eea058d3320796d1d.png'}/>
+        <StageItem id="water"
+              style={style.waterimg}
+              src={'http://www.glenrosebluegrass.com/images/CivicAlerts/5/_glass-of-water.png'}/>
+        <StageItem id="beer"
              style={style.beerimg}
-             src={'https://www.emojibase.com/resources/img/emojis/apple/x1f37a.png.pagespeed.ic.BvtGLK8p4U.png'}
-             draggable="true"
-             onDragStart={this.dragstart_handler.bind(this)}/>
+             src={'https://www.emojibase.com/resources/img/emojis/apple/x1f37a.png.pagespeed.ic.BvtGLK8p4U.png'}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>
