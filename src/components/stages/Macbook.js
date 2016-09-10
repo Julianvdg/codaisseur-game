@@ -6,11 +6,14 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "assignment", content: "Assignment: Create a new Rails project called - World-of-Codaisseur. Click on the screen to start." },
+    { kind: "assignment", content: 'Assignment: Create a new Rails project called "world-of-codaisseur" with a postgress database. Click on the screen to start.' },
     { kind: "goToClass", content: "Go to class" },
+    { kind: "goedAntwoord", content: "Goed gedaan!" },
+    { kind: "foutAntwoord", content: "Fout! Probeer opnieuw!" },
 ]
 
 class Macbook extends Component {
+
 
   componentDidMount() {
     {this.messageSelector("assignment")}
@@ -25,6 +28,7 @@ class Macbook extends Component {
         <button style={buttonStyle}
         onClick={this.sendAnswer.bind(this) }
         >Send answer</button>
+        <img id="wouter" style={wouterStyle}/>
         <DialogBox/>
       </div>
     )
@@ -44,8 +48,16 @@ class Macbook extends Component {
   }
 
   sendAnswer(){
-
-    console.log(document.getElementById("answer").value)
+    let answer = document.getElementById("answer").value
+    let lowercaseAnswer = answer.toLowerCase()
+    if (lowercaseAnswer === "rails new world-of-codaisseur -d postgresql") {
+      console.log("goed antwoord!")
+      {this.messageSelector("goedAntwoord")}
+      document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473514172/woutergoed_vbtqvk.png";
+    } else {
+      {this.messageSelector("foutAntwoord")}
+      document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473513895/wouterfout_dplpxr.png";
+      }
   }
 
 
@@ -113,4 +125,12 @@ let buttonStyle = {
   right: '265px',
   backgroundColor: '#000',
   color: '#fff'
+}
+
+let wouterStyle = {
+  position: 'absolute',
+  right: '-20px',
+  top: '210px',
+  width: '500px',
+  zIndex: '2',
 }
