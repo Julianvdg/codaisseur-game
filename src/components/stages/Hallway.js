@@ -6,7 +6,8 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "in hallway going to office" },
+    { kind: "bar", content: "Maybe just a quick break before coding" },
+    { kind: "office", content: "He took a face from the ancient gallery... and he walked on down the hall!" },
 ]
 
 class Hallway extends Component {
@@ -18,13 +19,14 @@ class Hallway extends Component {
       </div>
     )
   }
-  
+
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
   goIntoOffice(){this.props.changeStage(6)}
 
   // Dialog actions
-  dialogTest(){this.messageSelector("test")}
+  dialogBar(){this.messageSelector("bar")}
+  dialogOffice(){this.messageSelector("office")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -37,11 +39,20 @@ class Hallway extends Component {
 
   renderHitBoxes(){
     return(
-      <div
-        style={enterBar}
-        onClick={this.goIntoOffice.bind(this) }
-        onMouseEnter={this.dialogTest.bind(this) }
-        onMouseLeave={this.emptyDialogBox.bind(this) }>
+      <div>
+        <div
+          style={enterBar}
+          onClick={this.goIntoBar.bind(this) }
+          onMouseEnter={this.dialogBar.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
+
+        <div
+          style={office}
+          onClick={this.goIntoOffice.bind(this) }
+          onMouseEnter={this.dialogOffice.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
       </div>
     )
   }
@@ -69,11 +80,22 @@ let backgroundStyle = {
 
 // Hitboxes
 
+
 let enterBar = {
-  height: '400px',
-  width: '180px',
+  height: '150px',
+  width: '800px',
   position: 'absolute',
-  right: '160px',
-  bottom: '80px',
+  right: '40px',
+  bottom: '20px',
   cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let office = {
+  height: '180px',
+  width: '340px',
+  position: 'absolute',
+  left: '270px',
+  bottom: '400px',
+  backgroundColor: 'red'
 }

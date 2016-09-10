@@ -77,7 +77,7 @@ class Scaffold extends Component {
           ></div>
 
         <div
-          style={ceiling}
+          style={office}
           // onMouseEnter={this.dialogCeiling.bind(this) }
           // onMouseLeave={this.emptyDialogBox.bind(this) }
           ></div>
@@ -114,6 +114,7 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
+  backgroundColor: 'red'
 }
 
 
@@ -167,11 +168,11 @@ let kitchen = {
   backgroundColor: 'red'
 }
 
-let ceiling = {
-  height: '170px',
-  width: '690px',
+let office = {
+  height: '140px',
+  width: '220px',
   position: 'absolute',
-  left: '90px',
+  left: '330px',
   bottom: '400px',
   backgroundColor: 'red'
 }
