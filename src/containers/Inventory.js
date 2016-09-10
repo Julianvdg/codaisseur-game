@@ -101,12 +101,12 @@ class Inventory extends Component {
     const { inventory } = this.props
 
     return (
-      <div style={style.inventorybox}>
-        <div id="inventory" style={style.tiles} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+      <div id="inventory2" style={style.inventorybox} onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)}>
+        <div id="inventory" style={style.tiles}>
 
-          <div id="inventory1" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
+          {/* <div id="inventory1" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
             <img id="key1" style={style.images} src={'https://a2ua.com/key/key-012.jpg'} draggable="true" onDragStart={this.dragstart_handler.bind(this)}/>
-           </div>
+           </div> */}
            {/* <div id="inventory2" onDrop={this.drop.bind(this)} onDragOver={this.allowDrop.bind(this)} style={style.item}>
            <img id="keycard4"
                 style={style.images}
