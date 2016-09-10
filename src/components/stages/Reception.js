@@ -13,10 +13,20 @@ const messages = [
 ]
 
 const style = {
-    images: {
+    lollyimg: {
        position: 'absolute',
        top: '44%',
        left: '21%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '1',
+    },
+    flowersimg: {
+       position: 'absolute',
+       top: '37%',
+       left: '69%',
        height: '50px',
        marginTop: '-25px',
        marginLeft: '-25px',
@@ -30,10 +40,15 @@ class Reception extends Component {
     return(
       <div style={backgroundStyle}>
       <img id="lolly"
-           style={style.images}
+           style={style.lollyimg}
            src={'http://emojipedia-us.s3.amazonaws.com/cache/12/b1/12b1b8880776afc0a392fecec83058d0.png'}
            draggable="true"
            onDragStart={this.dragstart_handler.bind(this)}/>
+       <img id="flowers"
+            style={style.flowersimg}
+            src={'https://www.emojibase.com/resources/img/emojis/apple/1f490.png'}
+            draggable="true"
+            onDragStart={this.dragstart_handler.bind(this)}/>
         {this.renderHitBoxes()}
         <DialogBox/>
       </div>
@@ -58,8 +73,13 @@ class Reception extends Component {
     this.props.messageDialogBox(selectedMessage.content)
   }
 
-  showImage(){
+  showLolly(){
     var id = document.getElementById("lolly")
+    id.style.visibility = "visible";
+  }
+
+  showFlowers(){
+    var id = document.getElementById("flowers")
     id.style.visibility = "visible";
   }
 
@@ -95,14 +115,14 @@ class Reception extends Component {
           style={flowers}
           onMouseEnter={this.dialogFlowers.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.dialogGrabFlower.bind(this)}
+          onClick={this.showFlowers}
           ></div>
 
         <div
           style={lollys}
           onMouseEnter={this.dialogLollys.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.showImage}
+          onClick={this.showLolly}
           ></div>
 
         <div
@@ -161,7 +181,7 @@ let lollys = {
   left: '160px',
   bottom: '300px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 let flowers = {
@@ -171,7 +191,7 @@ let flowers = {
   left: '550px',
   bottom: '260px',
   cursor: 'pointer',
-  backgroundColor: 'red'
+  // backgroundColor: 'red'
 }
 
 let stairs = {
