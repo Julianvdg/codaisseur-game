@@ -57,7 +57,7 @@ export default connect(mapStateToProps, { messageDialogBox, emptyDialogBox })(Cl
 // Styles
 
 let backgroundStyle = {
-  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473429941/trappenhuis_fif5tk.jpg")',
+  backgroundImage: 'url("http://res.cloudinary.com/juvdg/image/upload/v1473497410/classroom_xkj1zh.jpg")',
   width: '880px',
   height: '580px',
   margin: '0 auto',
