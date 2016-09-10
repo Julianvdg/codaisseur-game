@@ -4,20 +4,35 @@ import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
 
+const messages = [
+    { kind: "lift", content: "Maybe I'll take the elevator down.." },
+    { kind: "game", content: "All work and no play makes Jack a dull boy.. Let's play a game!" },
+    { kind: "cacti", content: "Cacti.. the plant of choice for lazy people" },
+    { kind: "grabcacti", content: "Ouch!! What was I thinking!?" },
+    { kind: "hallway", content: "Better head towards the classroom" },
+    { kind: "kitchen", content: "Phew, I could use a drink!" },
+    { kind: "ceiling", content: "Glass ceilings are so 2015... concrete ceilings are what is hip!" },
+]
+
 class Bar extends Component {
 
   goDown(){ this.props.changeStage(0) }
   goHallway(){ this.props.changeStage(0) }
   goKitchen(){ this.props.changeStage(0) }
 
-  dialogLift(){ this.props.messageDialogBox("Maybe I'll take the elevator down..") }
-  dialogGame(){ this.props.messageDialogBox("All work and no play makes Jack a dull boy.. Let's play a game!" ) }
-  dialogCacti(){ this.props.messageDialogBox("Cacti.. the plant of choice for lazy people") }
-  dialogGrabCacti(){ this.props.messageDialogBox("Ouch!! What was I thinking!?") }
-  dialogHallway(){ this.props.messageDialogBox("Better head towards the classroom") }
-  dialogKitchen(){ this.props.messageDialogBox("Phew, I could use a drink!") }
-  dialogCeiling(){ this.props.messageDialogBox("Glass ceilings are so 2015... concrete ceilings are what is hip!") }
+  dialogLift(){this.messageSelector("lift")}
+  dialogGame(){this.messageSelector("game")}
+  dialogCacti(){ this.messageSelector("cacti")}
+  dialogGrabCacti(){ this.messageSelector("grabcacti")}
+  dialogHallway(){ this.messageSelector("hallway")}
+  dialogKitchen(){ this.messageSelector("kitchen")}
+  dialogCeiling(){ this.messageSelector("ceiling")}
   emptyDialogBox(){this.props.emptyDialogBox()}
+
+  messageSelector(kind){
+  const selectedMessage = messages.find((message) => message.kind == kind)
+  this.props.messageDialogBox(selectedMessage.content)
+  }
 
   render() {
 
@@ -25,7 +40,7 @@ class Bar extends Component {
       <div style={backgroundStyle}>
         <div
           style={useLift}
-          onMouseEnter={this.dialogLift.bind(this) }
+          onMouseEnter={this.messageSelector.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           onClick={this.goDown.bind(this) }
           ></div>
