@@ -85,7 +85,7 @@ class Kitchen extends Component {
   dialogBram(){this.messageSelector("bram")}
   nienkeAdvice(){this.messageSelector("nienkeadvice")}
   bramAdvice(){this.messageSelector("bramadvice")}
-  dialogBeer(){this.messageSelector("beer!")}
+  dialogBeer2(){this.messageSelector("beer!")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -127,7 +127,7 @@ class Kitchen extends Component {
 
          if(data == "beer") {
            // ev.dataTransfer.dropEffect = "none";
-           this.dialogBeer()
+           this.dialogBeer2()
            }
 
        }
