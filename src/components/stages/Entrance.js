@@ -76,7 +76,7 @@ class Entrance extends Component {
         if(data == "keycard") {
           // ev.dataTransfer.dropEffect = "none";
           this.enterWeWork()
-        
+
 
           }
 
@@ -137,7 +137,7 @@ class Entrance extends Component {
       {this.props.isMondyThere && !this.haveKey() ?
 
           (<div>
-              <img onClick={this.enterWeWork.bind(this)}
+              <img 
                    style={style.mondy}
                    src={'http://res.cloudinary.com/ckreeftmeijer/image/upload/v1473435057/mondy_480_izonfv.png'}/>
                    <StageItem id="keycard"
