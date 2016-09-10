@@ -10,7 +10,8 @@ const messages = [
 
 class Office extends Component {
 
-  goIntoBar(){this.props.changeStage(3)}
+  goIntoHallway(){this.props.changeStage(5)}
+  goIntoClassroom(){this.props.changeStage(7)}
 
   dialogTest(){this.messageSelector("test")}
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -27,7 +28,7 @@ class Office extends Component {
 
         <div
           style={enterBar}
-          onClick={this.goIntoBar.bind(this) }
+          onClick={this.goIntoClassroom.bind(this) }
           onMouseEnter={this.dialogTest.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>

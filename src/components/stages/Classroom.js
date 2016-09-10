@@ -10,7 +10,8 @@ const messages = [
 
 class Classroom extends Component {
 
-  goIntoBar(){this.props.changeStage(3)}
+  goIntoOffice(){this.props.changeStage(6)}
+  getBehindMacbook(){this.props.changeStage(8)}
 
   dialogTest(){this.messageSelector("test")}
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -27,7 +28,7 @@ class Classroom extends Component {
 
         <div
           style={enterBar}
-          onClick={this.goIntoBar.bind(this) }
+          onClick={this.getBehindMacbook.bind(this) }
           onMouseEnter={this.dialogTest.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>

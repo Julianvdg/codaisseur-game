@@ -16,9 +16,9 @@ const messages = [
 
 class Bar extends Component {
 
-  goDown(){ this.props.changeStage(0) }
-  goHallway(){ this.props.changeStage(0) }
-  goKitchen(){ this.props.changeStage(0) }
+  goDownToEntrance(){ this.props.changeStage(0) }
+  goIntoHallway(){ this.props.changeStage(5) }
+  goIntoKitchen(){ this.props.changeStage(4) }
 
   dialogLift(){this.messageSelector("lift")}
   dialogGame(){this.messageSelector("game")}
@@ -42,7 +42,7 @@ class Bar extends Component {
           style={useLift}
           onMouseEnter={this.dialogLift.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.goDown.bind(this) }
+          onClick={this.goDownToEntrance.bind(this) }
           ></div>
 
         <div
@@ -62,14 +62,14 @@ class Bar extends Component {
           style={hallway}
           onMouseEnter={this.dialogHallway.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.goHallway.bind(this)}
+          onClick={this.goIntoHallway.bind(this)}
           ></div>
 
         <div
           style={kitchen}
           onMouseEnter={this.dialogKitchen.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          onClick={this.goKitchen.bind(this)}
+          onClick={this.goIntoKitchen.bind(this)}
           ></div>
 
         <div

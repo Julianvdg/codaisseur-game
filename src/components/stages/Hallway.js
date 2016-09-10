@@ -11,6 +11,7 @@ const messages = [
 class Hallway extends Component {
 
   goIntoBar(){this.props.changeStage(3)}
+  goIntoOffice(){this.props.changeStage(6)}
 
   dialogTest(){this.messageSelector("test")}
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -27,7 +28,7 @@ class Hallway extends Component {
 
         <div
           style={enterBar}
-          onClick={this.goIntoBar.bind(this) }
+          onClick={this.goIntoOffice.bind(this) }
           onMouseEnter={this.dialogTest.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>
