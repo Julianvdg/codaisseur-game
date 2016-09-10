@@ -49,7 +49,6 @@ class Stage extends Component {
   render() {
     return(
       <div>
-        <h2> { this.props.currentStage } </h2>
         {this.renderCurrentStage()}
       </div>
     )
