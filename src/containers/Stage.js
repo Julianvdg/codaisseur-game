@@ -8,6 +8,7 @@ import Bar from '../components/stages/bar'
 import Entrance from '../components/stages/entrance'
 import Stairway from '../components/stages/stairway'
 import Reception from '../components/stages/reception'
+import Classroom from '../components/stages/classroom'
 
 
 class Stage extends Component {
@@ -27,6 +28,7 @@ class Stage extends Component {
        <Reception changeStage={ this.changeStage.bind(this) }/>,
        <Stairway changeStage={ this.changeStage.bind(this) }/>,
        <Bar changeStage={ this.changeStage.bind(this) }/>,
+       <Classroom changeStage={ this.changeStage.bind(this) }/>,
 
      ]
 

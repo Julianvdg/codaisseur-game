@@ -31,10 +31,6 @@ class Stairway extends Component {
       cursor: 'pointer',
     }
 
-
-
-
-    console.log(this.props)
     return(
       <div style={backgroundStyle}>
       <div

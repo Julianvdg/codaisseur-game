@@ -40,7 +40,7 @@ class Bar extends Component {
       <div style={backgroundStyle}>
         <div
           style={useLift}
-          onMouseEnter={this.messageSelector.bind(this) }
+          onMouseEnter={this.dialogLift.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
           onClick={this.goDown.bind(this) }
           ></div>
