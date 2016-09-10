@@ -6,7 +6,8 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "in stairway going to bar" },
+    { kind: "bar", content: "The breakroom or a.k.a bar. Is it friday today?" },
+    { kind: "downstairs", content: "Maybe I should go downstairs" },
 ]
 
 
@@ -22,9 +23,11 @@ class Stairway extends Component {
 
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
+  goDownStairs(){this.props.changeStage(1)}
 
   // Dialog actions
-  dialogTest(){this.messageSelector("test")}
+  dialogBar(){this.messageSelector("bar")}
+  dialogDownStairs(){this.messageSelector("downstairs")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -36,11 +39,19 @@ class Stairway extends Component {
 
   renderHitBoxes(){
     return(
-      <div
-        style={enterBar}
-        onClick={this.goIntoBar.bind(this) }
-        onMouseEnter={this.dialogTest.bind(this) }
-        onMouseLeave={this.emptyDialogBox.bind(this) }>
+      <div>
+        <div
+          style={enterBar}
+          onClick={this.goIntoBar.bind(this) }
+          onMouseEnter={this.dialogBar.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
+        <div
+          style={downStairs}
+          onClick={this.goDownStairs.bind(this) }
+          onMouseEnter={this.dialogDownStairs.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
       </div>
     )
   }
@@ -73,4 +84,15 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let downStairs = {
+  height: '200px',
+  width: '500px',
+  position: 'absolute',
+  right: '400px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
 }

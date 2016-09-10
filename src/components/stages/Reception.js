@@ -63,14 +63,14 @@ class Reception extends Component {
           style={stairs}
           onMouseEnter={this.dialogStairs.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.goUpTheStairs.bind(this)}
+          onClick={this.goUpTheStairs.bind(this)}
           ></div>
 
         <div
           style={outside}
           onMouseEnter={this.dialogOutside.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }
-          // onClick={this.goOutside.bind(this)}
+          onClick={this.goOutside.bind(this)}
           ></div>
 
       </div>
