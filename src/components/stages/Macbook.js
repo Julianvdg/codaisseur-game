@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import DialogBox from '../../components/DialogBox'
 import messageDialogBox from '../../actions/message-dialog-box'
 import emptyDialogBox from '../../actions/empty-dialog-box'
+import StageItem from '../StageItem'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
@@ -11,6 +12,24 @@ const messages = [
     { kind: "goedAntwoord", content: "Goed gedaan!" },
     { kind: "foutAntwoord", content: "Fout! Probeer opnieuw!" },
 ]
+
+const style = {
+    mondy: {
+      position: 'absolute',
+      left: '250px',
+      bottom: '1px',
+    },
+    images: {
+       position: 'absolute',
+       top: '59%',
+       left: '63%',
+       height: '50px',
+       marginTop: '-25px',
+       marginLeft: '-25px',
+       visibility: 'hidden',
+       zIndex: '10'
+    },
+  }
 
 class Macbook extends Component {
 
@@ -28,6 +47,9 @@ class Macbook extends Component {
         <button style={buttonStyle}
         onClick={this.sendAnswer.bind(this) }
         >Send answer</button>
+        <StageItem id="diploma"
+             style={style.images}
+             src={'http://image.flaticon.com/icons/png/128/167/167748.png'}/>
         <img id="wouter" style={wouterStyle}/>
         <DialogBox/>
       </div>
@@ -54,10 +76,15 @@ class Macbook extends Component {
       console.log("goed antwoord!")
       {this.messageSelector("goedAntwoord")}
       document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473514172/woutergoed_vbtqvk.png";
+      this.showDiploma()
     } else {
       {this.messageSelector("foutAntwoord")}
       document.getElementById("wouter").src = "http://res.cloudinary.com/juvdg/image/upload/v1473513895/wouterfout_dplpxr.png";
       }
+  }
+
+  showDiploma() {
+    document.getElementById("diploma").style.visibility= "visible"
   }
 
 

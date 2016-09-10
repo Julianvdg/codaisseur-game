@@ -37,7 +37,7 @@ class Bar extends Component {
   }
 
   // Navigation
-  goDownToEntrance(){ this.props.changeStage(0) }
+  goDownToEntrance(){ this.props.changeStage(1) }
   goIntoHallway(){ this.props.changeStage(5) }
   goIntoKitchen(){ this.props.changeStage(4) }
   goToArcade(){this.props.changeStage(9)}
