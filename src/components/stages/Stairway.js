@@ -24,6 +24,7 @@ class Stairway extends Component {
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
   goDownStairs(){this.props.changeStage(1)}
+  goToRecruiter(){this.props.changeStage(10)}
 
   // Dialog actions
   dialogBar(){this.messageSelector("bar")}
@@ -49,6 +50,12 @@ class Stairway extends Component {
         <div
           style={downStairs}
           onClick={this.goDownStairs.bind(this) }
+          onMouseEnter={this.dialogDownStairs.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
+        <div
+          style={toRecruiter}
+          onClick={this.goToRecruiter.bind(this) }
           onMouseEnter={this.dialogDownStairs.bind(this) }
           onMouseLeave={this.emptyDialogBox.bind(this) }>
         </div>
@@ -93,6 +100,16 @@ let downStairs = {
   position: 'absolute',
   right: '400px',
   bottom: '20px',
+  cursor: 'pointer',
+
+}
+
+let toRecruiter = {
+  height: '200px',
+  width: '500px',
+  position: 'absolute',
+  right: '400px',
+  top: '20px',
   cursor: 'pointer',
 
 }
