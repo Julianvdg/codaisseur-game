@@ -6,7 +6,11 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "in classroom going to macbook" },
+    { kind: "macbook", content: "Oh my zsh! Everyone has already started the assignment! Maybe I should too?" },
+    { kind: "jorge", content: "Something refreshing would be nice" },
+    { kind: "matthijs", content: "You don't need to get me anything" },
+    { kind: "mark", content: "I could use a cup of coffee" },
+    { kind: "office", content: "I think I might have some questions" },
 ]
 
 
@@ -25,7 +29,11 @@ class Classroom extends Component {
   getBehindMacbook(){this.props.changeStage(8)}
 
   // Dialog actions
-  dialogTest(){this.messageSelector("test")}
+  dialogMacBook(){this.messageSelector("macbook")}
+  dialogJorge(){this.messageSelector("jorge")}
+  dialogMatthijs(){this.messageSelector("matthijs")}
+  dialogMark(){this.messageSelector("mark")}
+  dialogOffice(){this.messageSelector("office")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -38,12 +46,43 @@ class Classroom extends Component {
 
   renderHitBoxes(){
     return(
-      <div
-        style={enterBar}
-        onClick={this.getBehindMacbook.bind(this) }
-        onMouseEnter={this.dialogTest.bind(this) }
-        onMouseLeave={this.emptyDialogBox.bind(this) }>
-      </div>
+      <div>
+        <div
+          style={getBehindMacBook}
+          onClick={this.getBehindMacbook.bind(this) }
+          onMouseEnter={this.dialogMacBook.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
+
+        <div
+          style={jorge}
+          onMouseEnter={this.dialogJorge.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goDownToEntrance.bind(this) }
+          ></div>
+
+        <div
+          style={matthijs}
+          onMouseEnter={this.dialogMatthijs.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goDownToEntrance.bind(this) }
+          ></div>
+
+        <div
+          style={mark}
+          onMouseEnter={this.dialogMark.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.dialogGrabCacti.bind(this)}
+          ></div>
+
+
+        <div
+          style={office}
+          onMouseEnter={this.dialogOffice.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          onClick={this.goIntoOffice.bind(this)}
+          ></div>
+    </div>
     )
   }
 }
@@ -68,11 +107,53 @@ let backgroundStyle = {
 
 // Hitboxes
 
-let enterBar = {
-  height: '400px',
-  width: '180px',
+let getBehindMacBook = {
+  height: '250px',
+  width: '400px',
   position: 'absolute',
-  right: '160px',
+  right: '200px',
   bottom: '80px',
   cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+
+let jorge = {
+  height: '270px',
+  width: '160px',
+  position: 'absolute',
+  left: '100px',
+  bottom: '170px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let matthijs = {
+  height: '140px',
+  width: '160px',
+  position: 'absolute',
+  left: '280px',
+  bottom: '340px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let mark = {
+  height: '300px',
+  width: '120px',
+  position: 'absolute',
+  left: '680px',
+  bottom: '140px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+
+let office = {
+  height: '100px',
+  width: '800px',
+  position: 'absolute',
+  left: '50px',
+  bottom: '480px',
+  backgroundColor: 'red'
 }
