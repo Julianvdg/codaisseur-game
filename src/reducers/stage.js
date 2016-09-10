@@ -4,7 +4,7 @@ import { CHANGE_STAGE } from '../actions/change-stage'
 export default function updateStage( state = 0, { type, payload  } ){
   switch (type) {
     case SHOW_FIRST_STAGE :
-      return 6
+      return 1
 
     case CHANGE_STAGE :
       return payload

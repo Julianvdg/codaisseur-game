@@ -18,7 +18,7 @@ class Scaffold extends Component {
       </div>
     )
   }
-  
+
   // Navigation
   goIntoBar(){this.props.changeStage(3)}
 
@@ -34,11 +34,53 @@ class Scaffold extends Component {
 
   renderHitBoxes(){
     return(
-      <div
-        style={enterBar}
-        onClick={this.goIntoBar.bind(this) }
-        onMouseEnter={this.dialogTest.bind(this) }
-        onMouseLeave={this.emptyDialogBox.bind(this) }>
+      <div>
+        <div
+          style={enterBar}
+          onClick={this.goIntoBar.bind(this) }
+          onMouseEnter={this.dialogTest.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }>
+        </div>
+
+        <div
+          style={useLift}
+          // onMouseEnter={this.dialogLift.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goDownToEntrance.bind(this) }
+          ></div>
+
+        <div
+          style={playGame}
+          // onMouseEnter={this.dialogGame.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
+
+        <div
+          style={lollys}
+          // onMouseEnter={this.dialogCacti.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.dialogGrabCacti.bind(this)}
+          ></div>
+
+        <div
+          style={hallway}
+          // onMouseEnter={this.dialogHallway.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goIntoHallway.bind(this)}
+          ></div>
+
+        <div
+          style={kitchen}
+          // onMouseEnter={this.dialogKitchen.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goIntoKitchen.bind(this)}
+          ></div>
+
+        <div
+          style={ceiling}
+          // onMouseEnter={this.dialogCeiling.bind(this) }
+          // onMouseLeave={this.emptyDialogBox.bind(this) }
+          ></div>
       </div>
     )
   }
@@ -72,4 +114,64 @@ let enterBar = {
   right: '160px',
   bottom: '80px',
   cursor: 'pointer',
+}
+
+
+let useLift = {
+  height: '195px',
+  width: '85px',
+  position: 'absolute',
+  left: '350px',
+  bottom: '170px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let lollys = {
+  height: '55px',
+  width: '55px',
+  position: 'absolute',
+  left: '160px',
+  bottom: '300px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let playGame = {
+  height: '150px',
+  width: '100px',
+  position: 'absolute',
+  left: '700px',
+  bottom: '140px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let hallway = {
+  height: '540px',
+  width: '80px',
+  position: 'absolute',
+  left: '800px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let kitchen = {
+  height: '540px',
+  width: '80px',
+  position: 'absolute',
+  left: '0px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let ceiling = {
+  height: '170px',
+  width: '690px',
+  position: 'absolute',
+  left: '90px',
+  bottom: '400px',
+  backgroundColor: 'red'
 }

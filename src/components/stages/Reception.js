@@ -6,7 +6,10 @@ import emptyDialogBox from '../../actions/empty-dialog-box'
 
 // Messages to be sent to the dialogbox from this component
 const messages = [
-    { kind: "test", content: "in reception going to stairway" },
+    { kind: "outside", content: "It's such a nice day.. Time for some fresh air!" },
+    { kind: "flowers", content: "Those flowers look really nice, should I steal one?" },
+    { kind: "lollys", content: "Free lollipops! Oh my Zsh!" },
+    { kind: "stairs", content: "Better head upstairs" },
 ]
 
 class Reception extends Component {
@@ -20,10 +23,15 @@ class Reception extends Component {
   }
 
   // Navigation
-  goToStairway(){this.props.changeStage(2)}
+  goUpTheStairs(){this.props.changeStage(2)}
+  goOutside(){this.props.changeStage(0)}
 
   // Dialog actions
   dialogTest(){this.messageSelector("test")}
+  dialogOutside(){this.messageSelector("outside")}
+  dialogStairs(){this.messageSelector("stairs")}
+  dialogFlowers(){this.messageSelector("flowers")}
+  dialogLollys(){this.messageSelector("lollys")}
 
   // Standard dialog tools
   emptyDialogBox(){this.props.emptyDialogBox()}
@@ -36,11 +44,36 @@ class Reception extends Component {
 
   renderHitBoxes(){
     return(
-      <img  src={'http://res.cloudinary.com/juvdg/image/upload/v1473444538/arrow_zhtwoy.png'}
-            style={arrowRight} onClick={this.goToStairway.bind(this) }
-            onMouseEnter={this.dialogTest.bind(this) }
-            onMouseLeave={this.emptyDialogBox.bind(this) }
-            />
+      <div>
+        <div
+          style={flowers}
+          onMouseEnter={this.dialogFlowers.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.dialogGrabFlower.bind(this)}
+          ></div>
+
+        <div
+          style={lollys}
+          onMouseEnter={this.dialogLollys.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.dialogGrabLolly.bind(this)}
+          ></div>
+
+        <div
+          style={stairs}
+          onMouseEnter={this.dialogStairs.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goUpTheStairs.bind(this)}
+          ></div>
+
+        <div
+          style={outside}
+          onMouseEnter={this.dialogOutside.bind(this) }
+          onMouseLeave={this.emptyDialogBox.bind(this) }
+          // onClick={this.goOutside.bind(this)}
+          ></div>
+
+      </div>
     )
   }
 }
@@ -65,10 +98,52 @@ let backgroundStyle = {
 
 // Hitboxes
 
-let arrowRight = {
-  width: '120px',
+let useLift = {
+  height: '195px',
+  width: '85px',
   position: 'absolute',
-  right: '70px',
-  top: '200px',
-  cursor: 'pointer'
+  left: '350px',
+  bottom: '170px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let lollys = {
+  height: '55px',
+  width: '55px',
+  position: 'absolute',
+  left: '160px',
+  bottom: '300px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let flowers = {
+  height: '150px',
+  width: '100px',
+  position: 'absolute',
+  left: '550px',
+  bottom: '260px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let stairs = {
+  height: '540px',
+  width: '80px',
+  position: 'absolute',
+  left: '800px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
+}
+
+let outside = {
+  height: '540px',
+  width: '80px',
+  position: 'absolute',
+  left: '0px',
+  bottom: '20px',
+  cursor: 'pointer',
+  backgroundColor: 'red'
 }
